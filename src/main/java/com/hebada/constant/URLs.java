@@ -6,8 +6,8 @@ package com.hebada.constant;
 public class URLs {
 	
 	public static final String ERROR= "/404";
-	
-    public static final String LOGIN = "admin/login";
+
+    public static final String LOGIN = "default/login";
     
     public static final String INDEX = "admin/index";
 }

@@ -70,7 +70,7 @@
 				<div class="body-login">
 					<div class="center-login">
 						<a href="#" class="logo pull-left hidden-xs">
-							<img src="assets/img/logo.png" height="45" alt="管理员" />
+							<img src="../assets/img/logo.png" height="45" alt="管理员" />
 						</a>
 
 						<div class="panel panel-login">
@@ -185,23 +185,24 @@
 		<!-- Vendor JS-->				
 		
 		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="assets/vendor/js/jquery-migrate-1.2.1.min.js"></script>
-		<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/vendor/skycons/js/skycons.js"></script>	
+		<script src="../assets/vendor/js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../assets/vendor/skycons/js/skycons.js"></script>	
 		
 		<!-- Plugins JS-->
 		
 		<!-- Theme JS -->		
-		<script src="assets/js/jquery.mmenu.min.js"></script>
-		<script src="assets/js/core.min.js"></script>
+		<script src="../assets/js/jquery.mmenu.min.js"></script>
+		<script src="../assets/js/core.min.js"></script>
 		
 		<!-- Pages JS -->
-		<script src="assets/js/pages/page-login.js"></script>
+		<script src="../assets/js/pages/page-login.js"></script>
 		
 		<!-- end: JavaScript-->
 		<script type="text/javascript">
 			$(function(){
 				$("#btn_sub").click(function(){
+					alert("in funtion ..")
 					var account = $("input[name='account']").val();
 					if(account == ""){
 						alert("请输入登录名!");
@@ -216,7 +217,7 @@
 					}
 					$.ajax({
 						type : "post",
-						url : "./admin/doLogin",
+						url : "../default/doLogin",
 						data : {
 							account : account,
 							password : password
@@ -224,7 +225,7 @@
 						success : function(data){
 							if(data == "login_success"){
 								
-								window.location.href="./admin/index"
+								window.location.href="../admin/home"
 							}else{
 								alert("error");
 							}

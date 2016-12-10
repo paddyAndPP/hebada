@@ -12,7 +12,7 @@ import com.hebada.repository.GuestBookDao;
 import com.hebada.repository.PageResults;
 
 @Service
-@Transactional
+
 public class GuestBookService {
 
 	@Autowired

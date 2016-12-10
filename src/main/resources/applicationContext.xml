@@ -84,21 +84,21 @@
     <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->  
     <!-- <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean> -->
     <!-- Shiro过滤器 -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
-	    <!-- Shiro的核心安全接口,这个属性是必须的 -->  
-	    <property name="securityManager" ref="securityManager"/>
-	    <!-- 身份认证失败，则跳转到登录页面的配置 -->  
-	    <property name="loginUrl" value="/admin/login"/>
-	    <!-- 权限认证失败，则跳转到指定页面 -->  
-	    <property name="unauthorizedUrl" value="/admin/login"/>  
-	    <!-- Shiro连接约束配置,即过滤链的定义 -->  
-	    <property name="filterChainDefinitions">  
-	        <value>  
-	            /admin/login=anon
-				/admin/login**/**=authc
-
-	        </value>  
-	    </property>
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- Shiro的核心安全接口,这个属性是必须的 -->
+		<property name="securityManager" ref="securityManager"/>
+		<!-- 身份认证失败，则跳转到登录页面的配置 -->
+		<property name="loginUrl" value="/default/login"/>
+		<!-- 权限认证失败，则跳转到指定页面 -->
+		<property name="unauthorizedUrl" value="/default/login"/>
+		<!-- Shiro连接约束配置,即过滤链的定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/default/**=anon
+				/admin/**=authc
+				/image/**=authc
+			</value>
+		</property>
 	</bean>  
 	<!-- 开启Shiro注解 -->
 	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>  

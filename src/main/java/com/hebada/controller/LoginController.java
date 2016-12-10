@@ -23,31 +23,36 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private UserService userService;
-	
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = "/default/login", method = RequestMethod.GET)
     public String login() {
         return URLs.LOGIN;
     }
-    
-    @RequestMapping("/admin/doLogin")
+
+    @RequestMapping("/default/doLogin")
     public @ResponseBody String doLogin(@RequestParam String account, @RequestParam String password){
-    	System.out.println("in doLogin function...");
-    	boolean isLogin = userService.login(account, password);
-    	if(isLogin){
-    		//HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-    		//HttpSession session = request.getSession();
-    		//session.setMaxInactiveInterval(1800);
-    		//session.setAttribute("user", user);
-    		return "login_success";
-    	}
-    	return "login_error";
+        System.out.println("in doLogin function...");
+        boolean isLogin = userService.login(account, password);
+        if(isLogin){
+            //HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            //HttpSession session = request.getSession();
+            //session.setMaxInactiveInterval(1800);
+            //session.setAttribute("user", user);
+            return "login_success";
+        }
+        return "login_error";
     }
-    
+
     @RequestMapping("/admin/index")
     public ModelAndView index(){
-    	return new ModelAndView(URLs.INDEX);
+        return new ModelAndView(URLs.INDEX);
     }
-    
+
+    @RequestMapping("/admin/home")
+    public ModelAndView home(){
+        return new ModelAndView("admin/home");
+    }
+
 }
