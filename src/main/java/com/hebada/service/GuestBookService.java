@@ -18,10 +18,10 @@ public class GuestBookService {
 	@Autowired
 	private GuestBookDao guestBookdao;
 	
-	public String findByPage(int page,int row){
+	/*public String findByPage(int page,int row){
 		List<GuestBook> list = guestBookdao.findByPage(page, row);
 		Gson gson = new Gson();
 		return null;
-	}
+	}*/
 	
 }

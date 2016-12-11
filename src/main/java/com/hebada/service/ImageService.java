@@ -1,21 +1,16 @@
 package com.hebada.service;
 
+import com.hebada.constant.Punctuation;
 import com.hebada.exception.MaxSizeException;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.net.SocketTimeoutException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.*;
 
 /**
@@ -35,15 +30,20 @@ public class ImageService {
             new File(path).mkdirs();
         for(Map.Entry<String, MultipartFile> fileEntry : fileMap.entrySet()) {
             MultipartFile file = fileEntry.getValue();
+            if(file.isEmpty()) continue;
             try {
                 validFileSize(file.getSize());
-                String url = save(file.getInputStream(), path + file.getName());
+                String url = save(file.getInputStream(), getFileUrl(path, file.getContentType()));
                 if(StringUtils.hasText(url)) filePaths.add(url);
             } catch (IOException e) {
                 logger.error("上传图片获取错误");
             }
         }
         return filePaths;
+    }
+
+    private String getFileUrl(String path, String fileType) {
+        return path + File.separator + UUID.randomUUID().toString() + Punctuation.DOT + fileType.split(Punctuation.SLASH)[1];
     }
 
     private void validFileSize(long size) {
@@ -71,6 +71,6 @@ public class ImageService {
     }
 
     public static void main(String[] args) {
-
+               ;
     }
 }

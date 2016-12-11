@@ -3,7 +3,7 @@ package com.hebada.constant;
 /**
  * Created by paddy.luo on 2016/12/4.
  */
-public class URLs {
+public final class URLs {
 	
 	public static final String ERROR= "/404";
 

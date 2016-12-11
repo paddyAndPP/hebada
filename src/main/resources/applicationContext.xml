@@ -96,7 +96,7 @@
 			<value>
 				/default/**=anon
 				/admin/**=authc
-				/image/**=authc
+				/image/**=anon
 			</value>
 		</property>
 	</bean>  

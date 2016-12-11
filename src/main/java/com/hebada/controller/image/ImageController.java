@@ -1,5 +1,6 @@
 package com.hebada.controller.image;
 
+import com.hebada.controller.DefaultRestController;
 import com.hebada.response.AjaxResponse;
 import com.hebada.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by paddy.luo on 2016/12/10.
  */
 @Controller
-public class ImageController {
+public class ImageController extends DefaultRestController{
 
     @Autowired
     private ImageService imageService;
@@ -25,6 +26,7 @@ public class ImageController {
         List<String> imageUrls =  imageService.uploadFiles(request.getFileMap(), "D:/image");
         if(CollectionUtils.isEmpty(imageUrls)) return AjaxResponse.success().with(imageUrls);
         return AjaxResponse.fail();
+
     }
 
 
