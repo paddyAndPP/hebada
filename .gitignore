@@ -7,3 +7,4 @@
 /.*.iml
 /.develop
 /.project
+/.src/main/resources/jdbc.properties
