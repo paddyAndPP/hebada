@@ -2,7 +2,6 @@ package com.hebada.service;
 
 import com.hebada.constant.Punctuation;
 import com.hebada.exception.MaxSizeException;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -65,7 +64,16 @@ public class ImageService {
             e.printStackTrace();
             logger.error("图片保存异常");
         } finally {
-            IOUtils.closeQuietly(source,out);
+            try{
+                if(null!=out){
+                    out.close();
+                }
+                if(null!=source){
+                    source.close();
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         return null;
     }

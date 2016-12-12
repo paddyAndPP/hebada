@@ -1,5 +1,6 @@
 package com.hebada.controller;
 
+import com.hebada.request.GuestBookRequest;
 import com.hebada.service.GuestBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,9 @@ public class GuestBookController {
     }
 
     @RequestMapping("/getGuestBookList")
-    public @ResponseBody String getGuestBookList(){
-
-        return guestBookService.findByPage(1,10);
+    public @ResponseBody String getGuestBookList(GuestBookRequest gbr){
+        System.out.println(gbr.toString());
+        return guestBookService.findByPage(gbr);
     }
 
 }

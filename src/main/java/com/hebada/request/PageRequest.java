@@ -13,24 +13,24 @@ public class PageRequest {
 
     private static final int DEFAULT_SIZE = 10;
 
-    @XmlElement(name = "currentPage")
-    protected int currentPage;
-    @XmlElement(name = "pageSize")
-    protected int pageSize;
+    @XmlElement(name = "page")
+    protected int page;
+    @XmlElement(name = "rows")
+    protected int rows;
 
-    public int getCurrentPage() {
-        return currentPage;
+    public int getPage() {
+        return page;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public void setPage(int page) {
+        this.page = page;
     }
 
-    public int getPageSize() {
-        return pageSize == 0 ? DEFAULT_SIZE : this.pageSize;
+    public int getRows() {
+        return rows;
     }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    public void setRows(int rows) {
+        this.rows = rows==DEFAULT_SIZE?DEFAULT_SIZE:rows;
     }
 }

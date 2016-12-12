@@ -430,4 +430,6 @@ public class BaseDAO<T> {
 		query.setMaxResults(1);
 		return query.list();
 	}
+
+
 }

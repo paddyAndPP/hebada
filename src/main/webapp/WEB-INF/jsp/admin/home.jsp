@@ -23,12 +23,13 @@
     </div>--%>
     <div data-options="region:'west',split:true" title="West" style="width: 20%;">
         <div class="easyui-accordion tab-menus" data-options="fit:true,border:false">
-            <div title="Title1" style="padding:10px;">
-                <a href="javascript:void(0);" class="tab-menu">content1</a>
+            <div title="Title1" style="padding:10px;" data-options="selected:true">
+                <span class="tab_link" url="../guestBook/guestBookList">客户留言</span>
+                <a href="javascript:void(0);" class="tab-menu">客户留言</a>
                 <a href="javascript:void(0);" class="tab-menu">content1</a>
                 <a href="javascript:void(0);" class="tab-menu">content1</a>
             </div>
-            <div title="Title2" data-options="selected:true" style="padding:10px;">
+            <div title="Title2"  style="padding:10px;">
                 <ul class="easyui-tree">
                     <li>
                         <span>My Documents</span>
@@ -76,6 +77,20 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/home/home.js"></script>
+<script type="text/javascript">
 
+    $(function () {
+        $(".tab_link").click(function () {
+            $(".easyui-tabs").tabs("add",{
+                //href:$(this).attr("url"),
+                title:$(this).text(),
+                closable:true,
+                //content:"<h1>sdfsdfsdf</h1>&lt;script&gt;window.location.href='../guestBook/getGuestBookList'&lt;script&gt;"
+                content:"<div title=\"结果下载\" data-options=\"closable:true,href:'../guestBook/guestBookList'\" style=\"padding:20px;\"></div>"
+             });
+            alert("11")
+        });
+    });
+</script>
 </body>
 </html>

@@ -49,6 +49,10 @@ public class GuestBook {
     @Column(name = "status" , columnDefinition = " INT DEFAULT 0")
     private Integer status;
 
+    //删除标记
+    @Column(name="deleted",columnDefinition = "BYTE DEFAULT 0")
+    private Byte deleted;
+
     public Integer getId() {
         return id;
     }
@@ -116,6 +120,12 @@ public class GuestBook {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
-    
-    
+
+    public Byte getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Byte deleted) {
+        this.deleted = deleted;
+    }
 }
