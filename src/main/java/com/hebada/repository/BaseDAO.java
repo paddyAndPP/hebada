@@ -110,7 +110,7 @@ public class BaseDAO<T> {
 				String key = it.next().toString();
 
 				Object obj = param.get(key);
-
+				System.out.println("key="+key+" value="+obj);
 				if (obj instanceof Collection<?>) {
 					q.setParameterList(key, (Collection<?>) obj);
 				} else if (obj instanceof Object[]) {
@@ -389,6 +389,7 @@ public class BaseDAO<T> {
 			while (it.hasNext()) {
 				String key = it.next().toString();
 				Object o = param.get(key);
+				System.out.println("key="+key+" value="+o);
 				if (o instanceof Collection<?>) {
 					q.setParameterList(key, (Collection<?>) o);
 				} else if (o instanceof Object[]) {
@@ -407,7 +408,9 @@ public class BaseDAO<T> {
 			Long count = count(hqlCount, param);
 			retValue.setTotal(count.intValue());
 		}
-		List<T> itemList = q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
+		Query query = q.setFirstResult((page - 1) * rows).setMaxResults(rows);
+		System.out.println(query.toString());
+		List<T> itemList = query.list();
 		retValue.setPage(page);
 		if (itemList == null) {
 			itemList = new ArrayList<T>();

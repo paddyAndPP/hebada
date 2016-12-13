@@ -14,21 +14,22 @@
 </head>
 <body>
 <div id="queryParams">
-    <label>姓名：</label><input type="text" id="name" class="easyui-textbox" data-options="prompt:'请输入姓名'"/>
+    <label>姓名：</label><input type="text" id="name"  class="easyui-textbox" data-options="prompt:'请输入姓名'"/>
 
     <label>状态</label>
     <select type="text" id="status" class="easyui-combobox" style="width:80px;">
-        <option val=""></option>
-        <option val="0">未读</option>
-        <option val="1">跟进</option>
-        <option val="2">结束</option>
+        <option value=""></option>
+        <option value="0">未读</option>
+        <option value="1">跟进</option>
+        <option value="2">结束</option>
     </select>
 
     <span id="search" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px">查询</span>
 
 </div>
 <table id="tb"></table>
-<input type="hidden" ></body>
+<input type="hidden" id="rowId"></body>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
@@ -36,7 +37,10 @@
 <script tpye="text/javascript">
     $(function () {
         $("#search").on("click",function () {
-            $("#tb").datagrid("reload");
+            $("#tb").datagrid("reload",{
+                status:$("#status").combobox("getValue"),
+                name:$("#name").val()
+            });
         });
 
 
@@ -62,12 +66,12 @@
             singleSelect:true,
             pageNumber:1,
             pageSize:20,
-            queryParams:{
+            /*queryParams:{
                 status:$("#status option:selected").attr("val"),
                 name:$("#name").val()
-            },
+            },*/
             onClickRow:function(rowIndex, rowData){
-                alert(rowData.id);
+                $("#rowId").val(rowData.id);
             }
 
         });

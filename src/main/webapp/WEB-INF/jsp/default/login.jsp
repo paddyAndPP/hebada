@@ -202,7 +202,6 @@
 		<script type="text/javascript">
 			$(function(){
 				$("#btn_sub").click(function(){
-					alert("in funtion ..")
 					var account = $("input[name='account']").val();
 					if(account == ""){
 						alert("请输入登录名!");
@@ -224,7 +223,6 @@
 						},
 						success : function(data){
 							if(data == "login_success"){
-								
 								window.location.href="../admin/home"
 							}else{
 								alert("error");
