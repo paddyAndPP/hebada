@@ -1,6 +1,7 @@
 package com.hebada.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hebada.entity.GuestBook;
 import com.hebada.request.GuestBookRequest;
 import com.hebada.request.PageData;
 import com.hebada.service.GuestBookService;
@@ -60,6 +61,11 @@ public class GuestBookController {
         System.out.println("page="+page+" rows="+rowsStr);
         System.out.println("name="+name+" status="+status);
         return guestBookService.findByPage(page,rows,name,status);
+    }
+
+    @RequestMapping("/deleteGuestBook")
+    public @ResponseBody boolean deleteGuestBook(int id){
+        return guestBookService.delete(id);
     }
 
 }

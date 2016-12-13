@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.hebada.entity.GuestBook;
 import com.hebada.repository.GuestBookDao;
 import com.hebada.repository.PageResults;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -30,5 +32,9 @@ public class GuestBookService {
 			e.printStackTrace();
 		}
 		return json;
+	}
+
+	public boolean delete(int id){
+		return guestBookdao.delete(id);
 	}
 }

@@ -13,22 +13,45 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/themes/bootstrap/easyui.css">
 </head>
 <body>
-<div id="queryParams">
-    <label>姓名：</label><input type="text" id="name"  class="easyui-textbox" data-options="prompt:'请输入姓名'"/>
+<div style="margin-top: 20px;margin-left: 20px;">
+    <div id="queryParams" style="float:left;">
+        <label>姓名：</label><input type="text" id="name"  class="easyui-textbox" data-options="prompt:'请输入姓名'"/>
 
-    <label>状态</label>
-    <select type="text" id="status" class="easyui-combobox" style="width:80px;">
-        <option value=""></option>
-        <option value="0">未读</option>
-        <option value="1">跟进</option>
-        <option value="2">结束</option>
-    </select>
+        <label>状态</label>
+        <select type="text" id="status" class="easyui-combobox" style="width:80px;">
+            <option value=""></option>
+            <option value="0">未读</option>
+            <option value="1">跟进</option>
+            <option value="2">结束</option>
+        </select>
 
-    <span id="search" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px">查询</span>
+        <span id="search" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width:80px">查询</span>
+
+    </div>
+    <div style="margin-left: 50px;">
+        <a href="javascript:void(0);" id="edit" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">跟进</a>
+        <a href="javascript:void(0);" id="remove"  class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
+
+    </div>
+</div>
+<table id="tb" style="margin-top: 20px;"></table>
+<input type="hidden" id="rowIndex"></body>
+<div id="win" style="display:none;">
+    <div style="margin: 20px auto;">
+
+        <p><label>姓名：</label><input class="easyui-textbox" id="win_name" readonly="readonly"/></p>
+        <p><label>电话：</label><input class="easyui-textbox" id="win_tel" readonly="readonly"/></p>
+        <p><label>地址：</label><input class="easyui-textbox" id="win_address" readonly="readonly"/></p>
+        <p><label>邮箱：</label><input class="easyui-textbox" id="win_email" readonly="readonly"/></p>
+        <p><label>留言：</label><input class="easyui-textbox" id="win_content" readonly="readonly"/></p>
+        <p><label>状态：</label><input class="easyui-textbox" id="win_status"/></p>
+        <input type="hidden" id="win_rowId" />
+        <input type="hidden" id="win_rowIndex" />
+        <p></p>
+    </div>
 
 </div>
-<table id="tb"></table>
-<input type="hidden" id="rowId"></body>
+
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
@@ -36,13 +59,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/home/home.js"></script>
 <script tpye="text/javascript">
     $(function () {
-        $("#search").on("click",function () {
-            $("#tb").datagrid("reload",{
-                status:$("#status").combobox("getValue"),
-                name:$("#name").val()
-            });
-        });
-
 
         $('#tb').datagrid({
              url:'../guestBook/getGuestBookList',
@@ -56,6 +72,7 @@
                 {field:'createTime',title:'留言时间',width:80,align:'center'},
                 {field:'status',title:'状态',width:80,align:'center'}
             ]],
+            title:"留言列表",
             fitColumns:true,
             striped:true,
             method:"post",
@@ -66,15 +83,64 @@
             singleSelect:true,
             pageNumber:1,
             pageSize:20,
-            /*queryParams:{
-                status:$("#status option:selected").attr("val"),
-                name:$("#name").val()
-            },*/
             onClickRow:function(rowIndex, rowData){
-                $("#rowId").val(rowData.id);
+                $("#rowIndex").val(rowIndex);
             }
 
         });
+
+        $("#search").on("click",function () {
+            $("#tb").datagrid("reload",{
+                status:$("#status").combobox("getValue"),
+                name:$("#name").val()
+            });
+        });
+
+        $("#edit").on("click",function(){
+
+            var object = $("#tb").datagrid("getSelected");
+            console.log(object);
+            $("#win_name").textbox("setText",object.name);
+            $("#win_tel").textbox("setText",object.tel);
+            $("#win_address").textbox("setText",object.address);
+            $("#win_email").textbox("setText",object.email);
+            $("#win_content").textbox("setText",object.content);
+            $("#win_rowId").val(object.id);
+            $("#win_rowIndex").val(object.rowIndex);
+
+            $("#win").window({
+                width:300,
+                height:400,
+                title : "跟进",
+                minimizable:false,
+                maximizable:false,
+                closable:true,
+                shadow:true,
+                inline:true
+            });
+        });
+
+        $("#remove").on("click",function(){
+            var object = $("#tb").datagrid("getSelected");
+            $.messager.confirm('提示','确定删除该行记录？',function(r){
+                if (r){
+                    $.ajax({
+                        url : "../guestBook/deleteGuestBook",
+                        type : "post",
+                        dataType : "json",
+                        data : {
+                            id : object.id
+                        },
+                        success : function(data){
+                            if(data){
+                                $("#search").trigger("click");
+                            }
+                        }
+                    });
+                }
+             });
+        });
+
 
     });
 

@@ -9,6 +9,8 @@ import com.hebada.entity.GuestBook;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class GuestBookDao {
@@ -23,8 +25,8 @@ public class GuestBookDao {
 		StringBuffer count = new StringBuffer("select count(*) from GuestBook a where deleted = 0 ");
 		Map<String,Object> param = new HashedMap();
 		if(null!=name && !"".equals(name)){
-			hql.append(" and name like '%"+name+"'");
-			count.append(" and name like '%"+name+"'");
+			hql.append(" and name like '%"+name+"%'");
+			count.append(" and name like '%"+name+"%'");
 			//param.put("name",name);
 		}
 		if(null!=status && status >= 0){
@@ -52,6 +54,19 @@ public class GuestBookDao {
 		//results.setRows(list);
 		//results.setTotal(count);
 		return results;//(List<GuestBook>)baseDao.find(hql, map);
+	}
+
+
+	public boolean delete(int id){
+		boolean isOk = false;
+		String hql = "update GuestBook set deleted = 1 where id ="+id;
+		try {
+			baseDao.executeHql(hql);
+			isOk = true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return isOk;
 	}
 
 	public long count(Map<String,Object> param){
