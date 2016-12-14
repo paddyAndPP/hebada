@@ -68,4 +68,12 @@ public class GuestBookController {
         return guestBookService.delete(id);
     }
 
+    @RequestMapping("/followGuestBook")
+    public @ResponseBody boolean updateGuestBook(int id , String status , String note){
+        if(status.matches("[0-9]*")){
+           return guestBookService.update(id,Integer.parseInt(status),note);
+        }
+        return false;
+    }
+
 }

@@ -6,25 +6,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
-     
-    
-    <context:component-scan base-package="com" />
-    
-    <context:property-placeholder location="classpath:jdbc.properties" />
 
-    
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		destroy-method="close">
+	<context:component-scan base-package="com" />
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		  destroy-method="close">
 		<!-- 数据库基本信息配置 -->
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 	</bean>
-    
-    <bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
-		p:dataSource-ref="dataSource">
+
+	<bean id="sessionFactory"
+		  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		  p:dataSource-ref="dataSource">
 		<property name="packagesToScan">
 			<list>
 				<value>com.hebada.entity</value>
@@ -40,51 +39,51 @@
 			</props>
 		</property>
 	</bean>
-    
-    <bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
-		p:sessionFactory-ref="sessionFactory" />
-	
+
+	<bean id="transactionManager"
+		  class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+		  p:sessionFactory-ref="sessionFactory" />
+
 	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
-		
+						  proxy-target-class="true" />
+
 	<aop:aspectj-autoproxy expose-proxy="true"
-		proxy-target-class="true" />
-    
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">  
-        <!-- 定义事务传播属性 -->  
-        <tx:attributes>  
-            <tx:method name="insert*" propagation="REQUIRED" />  
-            <tx:method name="update*" propagation="REQUIRED" />  
-            <tx:method name="edit*" propagation="REQUIRED" />  
-            <tx:method name="save*" propagation="REQUIRED" />  
-            <tx:method name="add*" propagation="REQUIRED" />  
-            <tx:method name="new*" propagation="REQUIRED" />  
-            <tx:method name="set*" propagation="REQUIRED" />  
-            <tx:method name="remove*" propagation="REQUIRED" />  
-            <tx:method name="delete*" propagation="REQUIRED" />  
-            <tx:method name="change*" propagation="REQUIRED" />  
-            <tx:method name="check*" propagation="REQUIRED" />  
-            <tx:method name="get*" propagation="REQUIRED" read-only="true" />  
-            <tx:method name="find*" propagation="REQUIRED" read-only="true" />  
-            <tx:method name="load*" propagation="REQUIRED" read-only="true" />  
-            <tx:method name="*" propagation="REQUIRED" read-only="true" />  
-        </tx:attributes>  
-    </tx:advice>  
-    
-    <!-- shiro -->
-    <!-- 自定义Realm -->
-	<bean id="myRealm" class="com.hebada.realm.MyRealm"/>  
-	
+						   proxy-target-class="true" />
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 定义事务传播属性 -->
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="new*" propagation="REQUIRED" />
+			<tx:method name="set*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="change*" propagation="REQUIRED" />
+			<tx:method name="check*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="load*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- shiro -->
+	<!-- 自定义Realm -->
+	<bean id="myRealm" class="com.hebada.realm.MyRealm"/>
+
 	<!-- 安全管理器 -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
-  	  <property name="realm" ref="myRealm"/>  
-	</bean>  
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />  
-  
-    <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->  
-    <!-- <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean> -->
-    <!-- Shiro过滤器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm"/>
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->
+	<!-- <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean> -->
+	<!-- Shiro过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- Shiro的核心安全接口,这个属性是必须的 -->
 		<property name="securityManager" ref="securityManager"/>
@@ -100,10 +99,10 @@
 				/image/**=anon
 			</value>
 		</property>
-	</bean>  
+	</bean>
 	<!-- 开启Shiro注解 -->
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>  
-  		<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">  
-  	  <property name="securityManager" ref="securityManager"/>  
-    </bean>  
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"/>
+	</bean>
 </beans>

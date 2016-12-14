@@ -18,7 +18,7 @@
         <label>姓名：</label><input type="text" id="name"  class="easyui-textbox" data-options="prompt:'请输入姓名'"/>
 
         <label>状态</label>
-        <select type="text" id="status" class="easyui-combobox" style="width:80px;">
+        <select  id="status" class="easyui-combobox" style="width:80px;">
             <option value=""></option>
             <option value="0">未读</option>
             <option value="1">跟进</option>
@@ -44,10 +44,24 @@
         <p><label>地址：</label><input class="easyui-textbox" id="win_address" readonly="readonly"/></p>
         <p><label>邮箱：</label><input class="easyui-textbox" id="win_email" readonly="readonly"/></p>
         <p><label>留言：</label><input class="easyui-textbox" id="win_content" readonly="readonly"/></p>
-        <p><label>状态：</label><input class="easyui-textbox" id="win_status"/></p>
+        <p>
+            <label>状态：</label>
+            <select  id="win_status" class="easyui-combobox" style="width:140px;">
+                <option value=""></option>
+                <option value="1">跟进</option>
+                <option value="2">结束</option>
+            </select>
+        </p>
+        <p>
+            <label>备注：</label>
+            <input id="win_note" class="easyui-textbox" data-options="multiline:true" style="width:142px;height:50px" />
+        </p>
         <input type="hidden" id="win_rowId" />
         <input type="hidden" id="win_rowIndex" />
-        <p></p>
+        <p>
+            <a href="javascript:void(0);" class="easyui-linkbutton" id="win_save">确定</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" id="win_cancle">取消</a>
+        </p>
     </div>
 
 </div>
@@ -64,12 +78,13 @@
              url:'../guestBook/getGuestBookList',
              columns:[[
                 {field:'id',title:'id',width:80,hidden:true},
-                {field:'name',title:'姓名',width:80},
+                {field:'name',title:'姓名',width:50},
                 {field:'tel',title:'电话',align:'center',width:80},
                 {field:'address',title:'地址',width:80,align:'center'},
                 {field:'email',title:'邮箱',width:80,align:'center'},
-                {field:'content',title:'留言',width:80,align:'left'},
+                {field:'content',title:'留言',width:150,align:'left'},
                 {field:'createTime',title:'留言时间',width:80,align:'center'},
+                {field:'note',title:'备注',width:150,align:'left'},
                 {field:'status',title:'状态',width:80,align:'center'}
             ]],
             title:"留言列表",
@@ -99,14 +114,21 @@
         $("#edit").on("click",function(){
 
             var object = $("#tb").datagrid("getSelected");
-            console.log(object);
+            if(!!!object){
+                $.messager.alert("提示","请选择要跟进的记录！",'info');
+                return false;
+            }
+            var status = object.status;
+            if(status == 2){
+                $.messager.alert("提示","该留言不需要跟进！",'info');
+                return false;
+            }
             $("#win_name").textbox("setText",object.name);
             $("#win_tel").textbox("setText",object.tel);
             $("#win_address").textbox("setText",object.address);
             $("#win_email").textbox("setText",object.email);
             $("#win_content").textbox("setText",object.content);
             $("#win_rowId").val(object.id);
-            $("#win_rowIndex").val(object.rowIndex);
 
             $("#win").window({
                 width:300,
@@ -141,7 +163,46 @@
              });
         });
 
+        $("#win_save").on("click",function(){
+            var status = $("#win_status").combobox("getValue");
+            if(status==""){
+                $.messager.alert("提示","请选择跟进的结果！","info");
+                return false;
+            }
+            if(status == "2"){
+                $.messager.confirm("提示","确定要结束跟进？",function(r){
+                    if(!r){
+                        $("#win_cancle").trigger("click");
 
+                    }
+                });
+            }
+            var note = $("#win_note").textbox("getValue");
+            var id = $("#win_rowId").val();
+            $.ajax({
+                type : "post",
+                url : "../guestBook/followGuestBook",
+                data : {
+                    status : status,
+                    note : note,
+                    id : id
+                },
+                success : function(data){
+                    console.log(data);
+                    if(data){
+                        $("#win_cancle").trigger("click");
+                        $("#search").trigger("click");
+                    }
+                }
+            });
+        })
+
+
+        $("#win_cancle").on("click",function(){
+            $("#win_note").val("");
+            $("#win_status").combobox("select",1);
+            $("#win").window("close");
+        })
     });
 
 

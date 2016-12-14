@@ -53,6 +53,9 @@ public class GuestBook {
     @Column(name="deleted",columnDefinition = "BYTE DEFAULT 0")
     private Byte deleted;
 
+    @Column(name="note",length = 50)
+    private String note;
+
     public Integer getId() {
         return id;
     }
@@ -127,5 +130,13 @@ public class GuestBook {
 
     public void setDeleted(Byte deleted) {
         this.deleted = deleted;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

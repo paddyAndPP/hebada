@@ -20,10 +20,8 @@ public class GuestBookDao {
 
 	public PageResults<GuestBook> findByPage(int page , int row,String name ,Integer status){
 		int beginIndex = (page - 1) * row;
-
 		StringBuffer hql = new StringBuffer("from GuestBook where deleted = 0 ");
 		StringBuffer count = new StringBuffer("select count(*) from GuestBook a where deleted = 0 ");
-		Map<String,Object> param = new HashedMap();
 		if(null!=name && !"".equals(name)){
 			hql.append(" and name like '%"+name+"%'");
 			count.append(" and name like '%"+name+"%'");
@@ -33,27 +31,10 @@ public class GuestBookDao {
 			hql.append(" and status = "+status);
 			count.append(" and status = "+status);
 			System.out.println("set parameter status:"+status);
-			//param.put("status",status);
 		}
 		hql.append(" order by id desc ");
-		//  order by create_time desc limit :beginIndex,:row
-		/*if(beginIndex<10000){
-
-		}else{
-			hql = "select * from GuestBook where not exists " +
-					"(select * from  GuestBook order by create_time desc limit :beginIdnex,1) " +
-					"order by create_time desc limit :row";
-		}*/
-
-		//Map map = new HashMap();
-		//Integer count = baseDao.findSqlCount(hqlCount, param);
-		//List list = baseDao.find(hql, param, page, row);
 		PageResults results = baseDao.findPage(hql.toString(), count.toString(), null, page, row);
-		//PageResults results = new PageResults();
-		//results.setPage(page);
-		//results.setRows(list);
-		//results.setTotal(count);
-		return results;//(List<GuestBook>)baseDao.find(hql, map);
+		return results;
 	}
 
 
@@ -69,16 +50,31 @@ public class GuestBookDao {
 		return isOk;
 	}
 
-	public long count(Map<String,Object> param){
-		StringBuffer countStr = new StringBuffer("select count(*) from GuestBook ");
-		if(null!=param && !param.isEmpty()){
-			countStr.append(" where ");
-			Set<String> keySet = param.keySet();
-			Iterator<String> iterator = keySet.iterator();
-			while(iterator.hasNext()){
-				
-			}
+	public boolean update(GuestBook guestBook){
+		boolean isOk = false;
+		try{
+			baseDao.saveOrUpdate(guestBook);
+			System.out.println("update GuestBook successfully");
+			isOk = true;
+
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		return 0l;
+		return isOk;
+	}
+
+	public boolean updateStatusAndNote(int id,int status,String note){
+		boolean isOk = false;
+		String hql = "update GuestBook set status = ? and note = ? where id = ?";
+		try {
+			baseDao.executeHql(hql,new Object[]{status,note,id});
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return isOk;
+	}
+
+	public GuestBook get(int id){
+		return (GuestBook)baseDao.get(GuestBook.class,id);
 	}
 }

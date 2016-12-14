@@ -58,6 +58,7 @@ public class BaseDAO<T> {
 
 	public void saveOrUpdate(T o) {
 		this.getCurrentSession().saveOrUpdate(o);
+		clearSession();
 	}
 
 	public List<T> find(String hql) {
