@@ -47,7 +47,6 @@
         <p>
             <label>状态：</label>
             <select  id="win_status" class="easyui-combobox" style="width:140px;">
-                <option value=""></option>
                 <option value="1">跟进</option>
                 <option value="2">结束</option>
             </select>
@@ -199,7 +198,7 @@
 
 
         $("#win_cancle").on("click",function(){
-            $("#win_note").val("");
+            $("#win_note").textbox("setValue","");
             $("#win_status").combobox("select",1);
             $("#win").window("close");
         })
