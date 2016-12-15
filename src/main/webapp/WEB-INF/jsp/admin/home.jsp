@@ -29,41 +29,10 @@
                 <a href="javascript:void(0);" class="tab-menu">content1</a>
                 <a href="javascript:void(0);" class="tab-menu">content1</a>
             </div>
-            <div title="Title2"  style="padding:10px;">
-                <ul class="easyui-tree">
-                    <li>
-                        <span>My Documents</span>
-                        <ul>
-                            <li >
-                                <em>Photos</em>
-                                <ul>
-                                    <li >
-                                        <a class="link" data-url="../admin/index">首页</a>
-                                    </li>
-                                    <li>
-                                        <a>Wife</a>
-                                    </li>
-                                    <li>
-                                        <a>Company</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li data-options="state:'closed'">
-                                <span >Program Files</span>
-                                <ul>
-                                    <li>Intel</li>
-                                    <li>Java</li>
-                                    <li>Microsoft Office</li>
-                                    <li>Games</li>
-                                </ul>
-                            </li>
-                            <li>index.html</li>
-                            <li>about.html</li>
-                            <li>welcome.html</li>
-                        </ul>
-                    </li>
-                </ul>
-
+            <div title="系统管理"  style="padding:10px;">
+                <span >人员管理</span>
+                <span>权限管理</span>
+                <span>系统参数</span>
             </div>
             <div title="Title3" style="padding:10px">
                 content3

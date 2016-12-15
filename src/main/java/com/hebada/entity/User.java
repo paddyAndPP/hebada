@@ -21,7 +21,7 @@ public class User {
     @Column(name="name",length=10,nullable = false)
     private String name;
     
-    @Column(name="account",length=32,nullable = false)
+    @Column(name="account",length=32,nullable = false,unique = true)
     private String account;
     
     @Column(name="password" , length = 32 , nullable = false)
@@ -32,6 +32,10 @@ public class User {
     
     @Column(name="role_id")
     private Integer roleId;
+
+	@Column(name = "deleted" , columnDefinition = "INT DEFAULT 0")
+	private Byte deleted;
+
 
 	public Integer getId() {
 		return id;
@@ -72,7 +76,13 @@ public class User {
 	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
-    
-    
-    
+
+	public Byte getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Byte deleted) {
+		this.deleted = deleted;
+	}
+
 }

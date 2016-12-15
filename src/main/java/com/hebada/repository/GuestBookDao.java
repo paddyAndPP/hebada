@@ -19,7 +19,7 @@ public class GuestBookDao {
 	public BaseDAO baseDao;
 
 	public PageResults<GuestBook> findByPage(int page , int row,String name ,Integer status){
-		int beginIndex = (page - 1) * row;
+		//int beginIndex = (page - 1) * row;
 		StringBuffer hql = new StringBuffer("from GuestBook where deleted = 0 ");
 		StringBuffer count = new StringBuffer("select count(*) from GuestBook a where deleted = 0 ");
 		if(null!=name && !"".equals(name)){

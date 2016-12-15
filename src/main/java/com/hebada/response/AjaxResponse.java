@@ -10,7 +10,11 @@ public class AjaxResponse {
 
     public AjaxResponse() {
     }
-
+    public AjaxResponse(int status,Object data , boolean ok){
+        this.status = status;
+        this.data = data;
+        this.ok = ok;
+    }
     public AjaxResponse(boolean ok) {
         this.ok = ok;
     }

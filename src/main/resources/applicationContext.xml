@@ -97,6 +97,8 @@
 				/default/**=anon
 				/admin/**=authc
 				/image/**=anon
+				/guestBook**/**=authc
+				/**=anon
 			</value>
 		</property>
 	</bean>
