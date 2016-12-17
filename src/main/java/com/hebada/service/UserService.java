@@ -1,5 +1,6 @@
 package com.hebada.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,11 +55,11 @@ public class UserService {
 		return userDao.findByAccount(account);
 	}
 	
-	public Set<String> findRoleByAccount(String account){
+	public List<String> findRoleByAccount(String account){
 		return userDao.findRolesByAccount(account);
 	}
 	
-	public Set<String> findPermissionByAccount(String account){
+	public List<String> findPermissionByAccount(String account){
 		return userDao.findPermissionByAccount(account);
 	}
 

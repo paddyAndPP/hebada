@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.hebada.entity.User;
 import com.hebada.service.UserService;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class MyRealm extends AuthorizingRealm{
 
@@ -29,8 +32,12 @@ public class MyRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		String account=(String)principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo authorizationInfo=new SimpleAuthorizationInfo();
-		authorizationInfo.setRoles(userService.findRoleByAccount(account));
-		authorizationInfo.setStringPermissions(userService.findPermissionByAccount(account));
+		Set roleSet = new HashSet();
+		roleSet.addAll(userService.findRoleByAccount(account));
+		authorizationInfo.setRoles(roleSet);
+		Set permissionSet = new HashSet();
+		permissionSet.addAll(userService.findPermissionByAccount(account));
+		authorizationInfo.setStringPermissions(permissionSet);
 		System.out.println("get permission");
 		return authorizationInfo;
 	}

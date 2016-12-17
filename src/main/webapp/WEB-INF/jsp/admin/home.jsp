@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -24,10 +25,12 @@
     <div data-options="region:'west',split:true" title="West" style="width: 20%;">
         <div class="easyui-accordion tab-menus" data-options="fit:true,border:false">
             <div title="Title1" style="padding:10px;" data-options="selected:true">
-                <span class="tab_link" url="../guestBook/guestBookList">客户留言</span>
-                <a href="javascript:void(0);" class="tab-menu">客户留言</a>
-                <a href="javascript:void(0);" class="tab-menu">content1</a>
-                <a href="javascript:void(0);" class="tab-menu">content1</a>
+                <shiro:hasRole name="manager">
+                    <span class="tab_link" url="../guestBook/guestBookList">客户留言</span>
+                    <a href="javascript:void(0);" class="tab-menu">客户留言</a>
+                    <a href="javascript:void(0);" class="tab-menu">content1</a>
+                    <a href="javascript:void(0);" class="tab-menu">content1</a>
+                </shiro:hasRole>
             </div>
             <div title="系统管理"  style="padding:10px;">
                 <span >人员管理</span>

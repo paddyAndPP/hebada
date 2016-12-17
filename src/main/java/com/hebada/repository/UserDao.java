@@ -1,5 +1,6 @@
 package com.hebada.repository;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,14 @@ public class UserDao {
 		return (User)baseDao.get("from User where deleted = 0 and account = ?", new String[]{account});
 	}
 	
-	public Set<String> findRolesByAccount(String account){
-		String hql = "select b.name from t_user a , t_role b where a.deleted = 0 and a.account=? and a.role_id = b.id";
-		return (Set<String>)baseDao.find(hql, new String[]{account});
+	public List<String> findRolesByAccount(String account){
+		String hql = "select b.name from User a , Role b where a.deleted = 0 and a.account=? and a.roleId = b.id";
+		return (List<String>)baseDao.find(hql, new String[]{account});
 	}
 	
-	public Set<String> findPermissionByAccount(String account){
-		String hql = "select c.name from t_user a , t_permission b where a.deleted = 0 and  a.account=? and a.role_id = b.role_id";
-		return (Set<String>)baseDao.find(hql, new String[]{account});
+	public List<String> findPermissionByAccount(String account){
+		String hql = "select b.name from User a , Permission b where a.deleted = 0 and  a.account=? and a.roleId = b.roleId";
+		return (List<String>)baseDao.find(hql, new String[]{account});
 	}
 
 	public boolean saveUser(User user){

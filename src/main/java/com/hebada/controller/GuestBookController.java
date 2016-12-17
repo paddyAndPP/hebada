@@ -6,6 +6,7 @@ import com.hebada.request.GuestBookRequest;
 import com.hebada.request.PageData;
 import com.hebada.service.GuestBookService;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,7 @@ public class GuestBookController {
         return new ModelAndView("guestBook/guestBookList");
     }
 
+    //@RequiresRoles("manager")
     @RequestMapping("/getGuestBookList")
     public @ResponseBody String getGuestBookList(HttpServletRequest request)throws Exception{
         String pageStr = request.getParameter("page");
