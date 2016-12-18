@@ -1,5 +1,8 @@
 package com.hebada.request;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.hebada.util.CustomerDateAndTimeDeserialize;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,7 +25,8 @@ public class NewsRequest {
     @NotBlank(message = "新闻标题不允许为空")
     private String title;
     @XmlElement(name = "dateTime")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonDeserialize(using = CustomerDateAndTimeDeserialize.class)
     private Date dateTime;
     @XmlElement(name = "description")
     private String description;
@@ -31,6 +35,8 @@ public class NewsRequest {
     private String content;
     @XmlElement(name = "top")
     private boolean top;
+    @XmlElement(name = "publish")
+    private boolean publish;
 
     public int getId() {
         return id;
@@ -78,5 +84,13 @@ public class NewsRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isPublish() {
+        return publish;
+    }
+
+    public void setPublish(boolean publish) {
+        this.publish = publish;
     }
 }

@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="">
+                <div>
                     <img src="${pageContext.request.contextPath}/assets/company/common/logo.png">
                 </div>
             </div>
@@ -49,15 +49,15 @@
     </ul>
 </nav>
 <!--advert-->
-<div id="slideBox" class="slideBox">
+<div id="slideBox" class="slideBox" style="border:0;max-height: 680px;">
     <div class="hd">
         <ul class="list-unstyled"><li>1</li><li>2</li><li>3</li></ul>
     </div>
     <div class="bd">
         <ul class="list-unstyled">
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic1.jpg" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic2.jpg" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic3.jpg" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic1.png" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic2.png" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic3.png" /></a></li>
         </ul>
     </div>
     <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
@@ -72,7 +72,7 @@
             <div class="">
                 <a type="button" class="btn btn-danger">关于和八达</a>
                 <p>公司创立于2014年5月，作为酒水行业领先的推广与资源整合平台，同年在全国孵化，并提出“买酒送车险”的创新服务模式，开创酒水推广的先河，成功策划推广“购买车险不花钱，嘉多利商贸来买单”的营销模式。企业致力于打造“中国酒文化传播第一平台”.....</p>
-                <img src="img/index1.jpg">
+                <img src="${pageContext.request.contextPath}/assets/company/index1.jpg">
                 <address>
                     <strong>和八达中国（总公司）</strong><br>
                     加盟热线：18100625066 / 025-86293833<br>
@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <div class="video">
+            <%--<div class="video">
                 <video id="example_video_1" class="video-js vjs-default-skin"
                        controls preload="auto" width="640" height="264"
                        poster="http://video-js.zencoder.com/oceans-clip.png"
@@ -158,7 +158,7 @@
                     <source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm" />
                     <source src="http://video-js.zencoder.com/oceans-clip.ogv" type="video/ogg" />
                 </video>
-            </div>
+            </div>--%>
 
             <div style="display: none;">
                 <h4>服务网点</h4>
@@ -179,13 +179,13 @@
     </div>
 
     <!--加盟-->
-    <div class="participate_wrap">
+    <<%--div class="participate_wrap">
         <div class="participate_panel">
             <a href="#">
                 欢迎加盟
             </a>
         </div>
-    </div>
+    </div>--%>
 
     <!--底部-->
     <div class="foot">

@@ -40,6 +40,6 @@ public class NewsRepository {
     }
 
     public void update(News news) {
-        baseDAO.update(news);
+        baseDAO.saveOrUpdate(news);
     }
 }

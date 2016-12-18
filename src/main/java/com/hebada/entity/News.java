@@ -37,7 +37,8 @@ public class News {
 
     @Column(name="is_top")
     private boolean isTop;
-
+    @Column(name = "description")
+    private String description;
     /*@Column(name="create_user")
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} , targetEntity=User.class)
     @JoinColumn(name="create_user_id")
@@ -45,9 +46,10 @@ public class News {
 
     @Column(name = "create_user_id")
     private Integer createUserId;
-
     @Column(name = "is_delete")
     private boolean isDelete;
+    @Column(name = "is_publish")
+    public boolean publish;
 
 	public Integer getId() {
         return id;
@@ -119,5 +121,21 @@ public class News {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isPublish() {
+        return publish;
+    }
+
+    public void setPublish(boolean publish) {
+        this.publish = publish;
     }
 }

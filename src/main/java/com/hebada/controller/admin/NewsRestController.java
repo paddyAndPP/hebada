@@ -6,9 +6,13 @@ import com.hebada.request.NewsRequest;
 import com.hebada.response.AjaxResponse;
 import com.hebada.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by paddy.luo on 2016/12/14.
@@ -32,7 +36,7 @@ public class NewsRestController extends DefaultRestController {
         return newsService.findByPage(page,rows,title);
     }
 
-    @RequestMapping(value = "/news", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/news", method = RequestMethod.POST)
     public AjaxResponse delete(Integer id) {
         newsService.delete(id);
         return AjaxResponse.success();
@@ -45,6 +49,7 @@ public class NewsRestController extends DefaultRestController {
         news.setTitle(request.getTitle());
         news.setTop(request.isTop());
         news.setContent(request.getContent());
+        news.setPublish(request.isPublish());
         return news;
     }
 }

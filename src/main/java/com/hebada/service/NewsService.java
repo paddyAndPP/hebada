@@ -20,6 +20,10 @@ public class NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
+    public News get(int id) {
+        return newsRepository.get(id);
+    }
+
     public void save(News news){
         News currnetNews = newsRepository.get(news.getId());
         if(currnetNews == null) {
@@ -47,6 +51,7 @@ public class NewsService {
 
     public void delete(Integer id) {
         News news = newsRepository.get(id);
-        newsRepository.delete(news);
+        news.setDelete(true);
+        newsRepository.update(news);
     }
 }

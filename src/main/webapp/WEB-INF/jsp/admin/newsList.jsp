@@ -46,6 +46,31 @@
             pageSize:20,
             onClickRow:function(rowIndex, rowData){
                 $("#rowIndex").val(rowIndex);
+            },
+            onDblClickRow:function (rowIndex, rowData) {
+                var self = this;
+                var $ = top.jQuery;
+                var tab = $(".easyui-tabs");
+                var text = "编辑新闻";
+                var url = "${pageContext.request.contextPath}/news?id=" +　rowData.id;
+                var content = '<iframe id="mainFrame" name="mainFrame" scrolling="auto" frameborder="0"  src="' + url
+                        + '" style=\"width:100%;height:99.5%;\"></iframe>';
+                if (tab.tabs('exists', text)) {
+                    tab.tabs('select', text);
+                    var curTab = tab.tabs('getTab',text);
+                    tab.tabs('update', {
+                        tab: curTab,
+                        options: {
+                            content : content
+                        }
+                    });
+                } else {
+                    tab.tabs('add', {
+                        title : text,
+                        closable : true,
+                        content : content
+                    });
+                }
             }
         });
 
@@ -65,8 +90,8 @@
             $.messager.confirm("提示","确定删除这条记录？",function (r) {
                 if(r){
                     $.ajax({
-                        type : "post",
-                        url : "../user/deleteUser",
+                        type : "POST",
+                        url : "${pageContext.request.contextPath}/news/",
                         data : {
                             id : object.id
                         },
