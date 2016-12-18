@@ -13,7 +13,10 @@
     <title>Full Layout - jQuery EasyUI Demo</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/themes/bootstrap/easyui.css">
-
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/home/home.js"></script>
 
 </head>
 <body>
@@ -27,6 +30,7 @@
             <div title="Title1" style="padding:10px;" data-options="selected:true">
                 <shiro:hasRole name="manager">
                     <span class="tab_link" url="../guestBook/guestBookList">客户留言</span>
+                    <span class="tab_link" url="../user/userList">用户管理</span>
                     <a href="javascript:void(0);" class="tab-menu">客户留言</a>
                     <a href="javascript:void(0);" class="tab-menu">content1</a>
                     <a href="javascript:void(0);" class="tab-menu">content1</a>
@@ -45,23 +49,71 @@
     <div class="easyui-tabs" data-options="region:'center'">
     </div>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/home/home.js"></script>
+
 <script type="text/javascript">
 
     $(function () {
         $(".tab_link").click(function () {
-            $(".easyui-tabs").tabs("add",{
+            var self = this;
+            var content = '<iframe id="mainFrame" name="mainFrame" scrolling="auto" frameborder="0"  src="' + $(self).attr("url")
+                    // + '" style=\"width:1190px;height:470px;\"></iframe>';
+                    + '" style=\"width:100%;height:99.5%;\"></iframe>';;
+            var text = $(self).text();
+            if ($(".easyui-tabs").tabs('exists', text)) {
+                $('.easyui-tabs').tabs('select', text);
+                var tab = $('.easyui-tabs').tabs('getSelected');
+                /* tab.panel('refresh', url); */
+
+                $('.easyui-tabs').tabs('update', {
+                    tab: tab,
+                    options: {
+                        content : content
+                    }
+                });
+            } else {
+                $('.easyui-tabs').tabs('add', {
+                    title : text,
+                    closable : true,
+                    content : content
+                });
+            }
+            /*$.ajax({
+                url:$(self).attr("url"),
+                type : "post",
+                success : function(data){
+                    content = data;
+                    if ($(".easyui-tabs").tabs('exists', text)) {
+                        $('.easyui-tabs').tabs('select', text);
+                        var tab = $('.easyui-tabs').tabs('getSelected');
+                        /!* tab.panel('refresh', url); *!/
+
+                        $('.easyui-tabs').tabs('update', {
+                            tab: tab,
+                            options: {
+                                content : content
+                            }
+                        });
+                    } else {
+                        $('.easyui-tabs').tabs('add', {
+                            title : text,
+                            closable : true,
+                            content : content
+                        });
+                    }
+                }
+            });*/
+
+            /*$(".easyui-tabs").tabs("add",{
                 //href:$(this).attr("url"),
                 title:$(this).text(),
                 closable:true,
                 //content:"<h1>sdfsdfsdf</h1>&lt;script&gt;window.location.href='../guestBook/getGuestBookList'&lt;script&gt;"
                 content:"<div title=\"结果下载\" data-options=\"closable:true,href:'../guestBook/guestBookList'\" style=\"padding:20px;\"></div>"
              });
-            alert("11")
+            alert("11")*/
         });
+
+
     });
 </script>
 </body>

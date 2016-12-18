@@ -30,6 +30,7 @@ public class GuestBookController {
 
 
     @RequestMapping("/guestBookList")
+    @ResponseBody
     public ModelAndView guestBookList(){
         return new ModelAndView("guestBook/guestBookList");
     }
