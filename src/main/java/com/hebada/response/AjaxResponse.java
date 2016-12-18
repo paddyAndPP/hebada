@@ -15,12 +15,12 @@ public class AjaxResponse {
         this.data = data;
         this.ok = ok;
     }
-    public AjaxResponse(boolean ok) {
-        this.ok = ok;
+    public AjaxResponse(int status) {
+        this.status = status;
     }
 
     public static AjaxResponse success() {
-        return  new AjaxResponse(true);
+        return  new AjaxResponse(0);
     }
 
     public AjaxResponse with(Object data) {
@@ -29,7 +29,7 @@ public class AjaxResponse {
     }
 
     public static AjaxResponse fail() {
-        return new AjaxResponse(false);
+        return new AjaxResponse(1);
     }
 
     public int getStatus() {

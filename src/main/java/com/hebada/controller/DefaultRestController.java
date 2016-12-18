@@ -20,7 +20,7 @@ public class DefaultRestController {
         return ErrorResponse.fail(e.getMessage());
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ErrorResponse resourceNotFound(ResourceNotFoundException e) {

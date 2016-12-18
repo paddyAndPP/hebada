@@ -41,8 +41,10 @@
                 <span>权限管理</span>
                 <span>系统参数</span>
             </div>
-            <div title="Title3" style="padding:10px">
-                content3
+            <div title="新闻管理" style="padding:10px">
+                <span class="tab_link" style="display: block" url="${pageContext.request.contextPath}/news/">新闻发布</span>
+                <span class="tab_link" style="display: block" url="${pageContext.request.contextPath}/news/list">新闻列表</span>
+                <span style="display: block">草稿箱</span>
             </div>
         </div>
     </div>

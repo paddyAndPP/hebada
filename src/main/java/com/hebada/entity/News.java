@@ -1,8 +1,5 @@
 package com.hebada.entity;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -39,15 +36,18 @@ public class News {
     private Timestamp publishTime;
 
     @Column(name="is_top")
-    private byte isTop;
+    private boolean isTop;
 
     /*@Column(name="create_user")
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE} , targetEntity=User.class)
     @JoinColumn(name="create_user_id")
     private User createUser;*/
 
-    private Integer craeteUserId;
+    @Column(name = "create_user_id")
+    private Integer createUserId;
 
+    @Column(name = "is_delete")
+    private boolean isDelete;
 
 	public Integer getId() {
         return id;
@@ -97,27 +97,27 @@ public class News {
         this.publishTime = publishTime;
     }
 
-    public byte getIsTop() {
+    public boolean isTop() {
         return isTop;
     }
 
-    public void setIsTop(byte isTop) {
-        this.isTop = isTop;
+    public void setTop(boolean top) {
+        isTop = top;
     }
 
-   /* public User getCreateUser() {
-        return createUser;
+    public Integer getCreateUserId() {
+		return createUserId;
+	}
+
+	public void setCreateUserId(Integer createUserId) {
+		this.createUserId = createUserId;
+	}
+
+    public boolean isDelete() {
+        return isDelete;
     }
 
-    public void setCreateUser(User createUser) {
-        this.createUser = createUser;
-    }*/
-    
-    public Integer getCraeteUserId() {
-		return craeteUserId;
-	}
-
-	public void setCraeteUserId(Integer craeteUserId) {
-		this.craeteUserId = craeteUserId;
-	}
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
 }

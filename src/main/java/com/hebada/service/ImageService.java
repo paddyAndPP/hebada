@@ -22,27 +22,28 @@ public class ImageService {
     private static Logger logger = LoggerFactory.getLogger(ImageService.class);
 
 
-    public List<String> uploadFiles(Map<String, MultipartFile> fileMap, String path) {
+    public List<String> uploadFiles(Map<String, MultipartFile> fileMap, String filePath) {
         if(CollectionUtils.isEmpty(fileMap)) return Collections.emptyList();
-        List<String> filePaths = new ArrayList<>(fileMap.size());
-        if(!new File(path).exists())
-            new File(path).mkdirs();
+        List<String> fileNames = new ArrayList<>(fileMap.size());
+        if(!new File(filePath).exists())
+            new File(filePath).mkdirs();
         for(Map.Entry<String, MultipartFile> fileEntry : fileMap.entrySet()) {
             MultipartFile file = fileEntry.getValue();
             if(file.isEmpty()) continue;
             try {
                 validFileSize(file.getSize());
-                String url = save(file.getInputStream(), getFileUrl(path, file.getContentType()));
-                if(StringUtils.hasText(url)) filePaths.add(url);
+                String fileName = getFileName(file.getContentType());
+                String url = save(file.getInputStream(), filePath + File.separator + fileName);
+                if(StringUtils.hasText(url)) fileNames.add(fileName);
             } catch (IOException e) {
                 logger.error("上传图片获取错误");
             }
         }
-        return filePaths;
+        return fileNames;
     }
 
-    private String getFileUrl(String path, String fileType) {
-        return path + File.separator + UUID.randomUUID().toString() + Punctuation.DOT + fileType.split(Punctuation.SLASH)[1];
+    private String getFileName(String fileType) {
+        return UUID.randomUUID().toString() + Punctuation.DOT + fileType.split(Punctuation.SLASH)[1];
     }
 
     private void validFileSize(long size) {

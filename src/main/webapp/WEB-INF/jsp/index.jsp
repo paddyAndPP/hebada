@@ -1,10 +1,7 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title></title>
     <!-- Vendor CSS-->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="${pageContext.request.contextPath}/assets/vendor/skycons/css/skycons.css" rel="stylesheet" />
@@ -12,25 +9,23 @@
     <link href="${pageContext.request.contextPath}/assets/css/home/index.css" rel="stylesheet" />
 </head>
 <body>
-
 <!--logo-->
 <div class="head">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="">
-                    <img src="img/logo.png">
+                    <img src="${pageContext.request.contextPath}/assets/company/common/logo.png">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="pull-right">
-                    <img src="img/phone.png">
+                    <img src="${pageContext.request.contextPath}/assets/company/common/phone.png">
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <!--menu-->
 <nav class="nav">
     <ul class="nav_menu">
@@ -53,7 +48,6 @@
         </li>
     </ul>
 </nav>
-
 <!--advert-->
 <div id="slideBox" class="slideBox">
     <div class="hd">
@@ -61,18 +55,15 @@
     </div>
     <div class="bd">
         <ul class="list-unstyled">
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic1.jpg" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic2.jpg" /></a></li>
-            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic3.jpg" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic1.jpg" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic2.jpg" /></a></li>
+            <li><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/advertise/pic3.jpg" /></a></li>
         </ul>
     </div>
-
     <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
     <a class="prev" href="javascript:void(0)"></a>
     <a class="next" href="javascript:void(0)"></a>
-
 </div>
-
 <!--content-->
 <div class="container">
     <div class="row">
@@ -127,27 +118,27 @@
                     <div class="bd">
                         <ul class="picList">
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic1.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/1.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图1</a></div>
                             </li>
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic2.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/2.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图2</a></div>
                             </li>
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic3.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/3.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图3</a></div>
                             </li>
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic4.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/4.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图4</a></div>
                             </li>
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic5.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/5.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图5</a></div>
                             </li>
                             <li>
-                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="images/pic6.jpg" /></a></div>
+                                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="${pageContext.request.contextPath}/assets/company/product/6.jpg" /></a></div>
                                 <div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图6</a></div>
                             </li>
                         </ul>
@@ -171,7 +162,7 @@
 
             <div style="display: none;">
                 <h4>服务网点</h4>
-                <img src="img/index-map.jpg">
+                <img src="${pageContext.request.contextPath}/assets/company/common/index-map.jpg">
                 <div>
                     <ul class="list-unstyled list-inline">
                         <li><a href="#" class="btn">扬州</a></li>
@@ -202,7 +193,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="left">
-                        <img src="img/logo1.png">
+                        <img src="${pageContext.request.contextPath}/assets/company/common/logo1.png">
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -217,15 +208,13 @@
             </div>
         </div>
     </div>
-
 </div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/lib/jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript">
-        var ary = location.href.split("&");
-        $(".slideBox").slide( { mainCell:".bd ul", effect:"fold",autoPlay:true,trigger:"mouseover",easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
-        $(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,trigger:"click"});
+    var ary = location.href.split("&");
+    $(".slideBox").slide( { mainCell:".bd ul", effect:"fold",autoPlay:true,trigger:"mouseover",easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
+//    $(".picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,trigger:"click"});
 </script>
 </body>
-
 </html>
