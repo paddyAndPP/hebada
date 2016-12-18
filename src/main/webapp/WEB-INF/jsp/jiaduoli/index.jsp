@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>和八达</title>
+    <link type="text/css" rel="stylesheet" href="css/Base.css" />
+    <link type="text/css" rel="stylesheet" href="css/Modify.css" />
     <style>
         *{font-size:12px;}
         #left{width:325px; float:left;}
@@ -135,7 +137,6 @@
                 </table>
             </div>
 
-
             <div>
                 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="323" height="194" VIEWASTEXT>
 
@@ -152,12 +153,9 @@
 
                 </object>
             </div>
-
             <div style="padding-top:20px">
                 <img src="images/code.jpg">
             </div>
-
-
         </div>
         <div id="right">
             <div style="background-color:#ede9de">
@@ -242,37 +240,30 @@
                     <a href='net.asp?classid=14&id=432'>扬州</a><a href='net.asp?classid=14&id=433'>无锡</a><a href='net.asp?classid=14&id=434'>江阴</a><a href='net.asp?classid=14&id=435'>太仓</a><a href='net.asp?classid=14&id=436'>南京建邺</a><a href='net.asp?classid=14&id=437'>昆山</a><a href='net.asp?classid=14&id=438'>苏州常熟</a><a href='net.asp?classid=14&id=444'>常州金坛</a><a href='net.asp?classid=14&id=445'>南京六合</a><a href='net.asp?classid=14&id=447'>徐州邳州</a><a href='net.asp?classid=14&id=448'>徐州泉山</a><a href='net.asp?classid=14&id=449'>镇江润州</a><a href='net.asp?classid=14&id=460'>盐城亭湖</a><a href='net.asp?classid=14&id=461'>宿迁宿城区</a><a href='net.asp?classid=14&id=463'>宿迁泗阳</a><a href='net.asp?classid=14&id=465'>镇江丹阳</a><a href='net.asp?classid=14&id=466'>徐州云龙区</a><a href='net.asp?classid=14&id=467'>镇江丹徒</a><a href='net.asp?classid=14&id=468'>浙江温州</a><a href='net.asp?classid=14&id=469'>淮安清河店</a><a href='net.asp?classid=14&id=470'>宿迁沭阳</a><a href='net.asp?classid=14' style='background-color:#a19e96;'>>> More</a><div class='clear'></div>
                 </div>
             </div>
-
-
-
             <div class="clear"></div>
-
-
-
             <div style="margin-top:20px;padding-top:20px;border-top:1px dotted #a2a2a2;">
-            <a href="about.asp?classid=9&id=426"><img src="images/join2.jpg" style="padding-bottom:15px; margin-bottom:15px;  alt="" /></a>
+                <a href="about.asp?classid=9&id=426"><img src="images/join2.jpg" style="padding-bottom:15px; margin-bottom:15px;" /></a>
             </div>
         </div>
-
     </div>
     <div class="clear"></div>
-</div>
-<div id="bottom">
-    <table id="ch-bottom">
-        <tr>
-            <td style="width:150px; border-right:1px solid #ceccc9;"><img src="images/logo1.png" alt="" /></td>
-            <td style="padding-left:20px;">版权所有&copy;江苏嘉多利商贸有限公司<br />
+    <div id="bottom">
+        <table id="ch-bottom">
+            <tr>
+                <td style="width:150px; border-right:1px solid #ceccc9;"><img src="images/logo1.png" alt="" /></td>
+                <td style="padding-left:20px;">版权所有&copy;江苏嘉多利商贸有限公司<br />
 
-                地址：江苏省南京市鼓楼区东宝路8号3幢802<br />
-                热线：400-816-5519 / 18100625066 / 025-86293833<br />
-                手机：17701592688
-            </td>
-            <td style="text-align:right;">
-                Copyright 2014-2015 jiaduoli198.com<br />
-                All Rights Reserved.
-            </td>
-        </tr>
-    </table>
+                    地址：江苏省南京市鼓楼区东宝路8号3幢802<br />
+                    热线：400-816-5519 / 18100625066 / 025-86293833<br />
+                    手机：17701592688
+                </td>
+                <td style="text-align:right;">
+                    Copyright 2014-2015 jiaduoli198.com<br />
+                    All Rights Reserved.
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>
