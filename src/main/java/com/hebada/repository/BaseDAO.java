@@ -54,6 +54,7 @@ public class BaseDAO<T> {
 
 	public void update(T o) {
 		this.getCurrentSession().update(o);
+		clearSession();
 	}
 
 	public void saveOrUpdate(T o) {

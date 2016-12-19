@@ -1,8 +1,12 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<base  href="<%=basePath%>"  />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link type="text/css" rel="stylesheet" href="css/Base.css" />
 <link type="text/css" rel="stylesheet" href="css/Modify.css" />
 <!--[if lt IE 9]>
@@ -11,7 +15,7 @@
 <!--[if gte IE 9]><!-->
     <script src="js/jquery-2.1.1.js"></script>
 <!--<![endif]-->
-<title>¹ØÓÚÎÒÃÇ</title>
+<title>å…³äºŽæˆ‘ä»¬</title>
 <style>
 	.left{width:210px; float:left;}
 	.right{width:830px; padding:40px; padding-bottom:20px; background-color:white; float:right;}
@@ -45,45 +49,50 @@
 					<img src="images/logoBg.jpg" />
 					<img src="images/menuBg.jpg" />
 				</div>
-                <div id="fa-menu">
-					<img src="images/logo.png" style="position:absolute; top:19px;" />
-					<img src="images/phone.png" style="position:absolute; top:31px; right:0;" />
-					<ul id="menu">
-						<li>
-							<a href="index.asp" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>Ê×Ò³</span></a>
-						</li>
-						<li>
-							<a href="activity.asp"><img src="images/menu2.jpg" />&nbsp;&nbsp;<span>×îÐÂ»î¶¯</span></a>
-							<div></div>
-						</li>
-						<li>
-							<a href="about.asp?classid=9"><img src="images/menu3.jpg" />&nbsp;&nbsp;<span>¹ØÓÚÎÒÃÇ</span></a>
-							<div>
-								<a href='about.asp?classid=9&id=423'>¹«Ë¾½éÉÜ</a><a href='about.asp?classid=9&id=424'>×ÊÖÊÈÙÓþ</a><a href='about.asp?classid=9&id=425'>Õ½ÂÔºÏ×÷</a><a href='about.asp?classid=9&id=426'>¼ÓÃËÕþ²ß</a><a href='about.asp?classid=9&id=427'>ÁªÏµ·½Ê½</a>
+				<div id="fa-menu">
+								<img src="images/logo.png" style="position:absolute; top:19px;" />
+								<img src="images/phone.png" style="position:absolute; top:31px; right:0;" />
+								<ul id="menu">
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>é¦–é¡µ</span></a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/zxdt"><img src="images/menu2.jpg" />&nbsp;&nbsp;<span>æœ€æ–°æ´»åŠ¨</span></a>
+										<div></div>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/gywm"><img src="images/menu3.jpg" />&nbsp;&nbsp;<span>å…³äºŽæˆ‘ä»¬</span></a>
+										<div>
+											<a href='${pageContext.request.contextPath}/jdl/gsjs'>å…¬å¸ä»‹ç»</a>
+											<a href='${pageContext.request.contextPath}/jdl/ryzz'>èµ„è´¨è£èª‰</a>
+											<a href='${pageContext.request.contextPath}/jdl/zlhz'>æˆ˜ç•¥åˆä½œ</a>
+											<a href='${pageContext.request.contextPath}/jdl/jmzc'>åŠ ç›Ÿæ”¿ç­–</a>
+											<a href='${pageContext.request.contextPath}/jdl/lxfs'>è”ç³»æ–¹å¼</a>
+										</div>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/dtxx"><img src="images/menu4.jpg" />&nbsp;&nbsp;<span>åŠ¨æ€ä¿¡æ¯</span></a>
+										<div>
+											<a href='${pageContext.request.contextPath}/jdl/gsxw'>å…¬å¸æ–°é—»</a>
+											<a href='${pageContext.request.contextPath}/jdl/bxzs'>ä¿é™©çŸ¥è¯†</a>
+										</div>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/wlsc"><img src="images/menu5.jpg" />&nbsp;&nbsp;<span>ç½‘ç»œå•†åŸŽ</span></a>
+										<div>
+											<a href='${pageContext.request.contextPath}/jdl/lzlj'>æ³¸å·žè€çª–</a>
+										</div>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/fwwd"><img src="images/menu6.jpg" />&nbsp;&nbsp;<span>æœåŠ¡ç½‘ç‚¹</span></a>
+										<div></div>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/jdl/zlxz" style="padding-right:0;"><img src="images/menu7.jpg" />&nbsp;&nbsp;<span>èµ„æ–™ä¸‹è½½</span></a>
+										<div></div>
+									</li>
+								</ul>
 							</div>
-						</li>
-						<li>
-							<a href="news.asp"><img src="images/menu4.jpg" />&nbsp;&nbsp;<span>¶¯Ì¬ÐÅÏ¢</span></a>
-							<div>
-                            	<a href='news.asp?classid=16'>¹«Ë¾ÐÂÎÅ</a><a href='news.asp?classid=17'>±£ÏÕÖªÊ¶</a>
-                            </div>
-						</li>
-						<li>
-							<a href="store.asp"><img src="images/menu5.jpg" />&nbsp;&nbsp;<span>ÍøÂçÉÌ³Ç</span></a>
-							<div>
-								<a href='store.asp?classid=11'>ãòÖÝÀÏ½Ñ</a><a href='store.asp?classid=18'>±´Ðã±¤ºì¾Æ</a><a href='store.asp?classid=19'>ÎåÁ¸Òº</a><a href='store.asp?classid=20'>Ã©Ì¨</a><a href='store.asp?classid=21'>¼ÝÍ¼ºÐ×Ó</a><a href='store.asp?classid=22'>ÈÙÊÂ´ï</a><a href='store.asp?classid=23'>·É¿Æ</a><a href='store.asp?classid=24'>ÌÃ»Ê¼Ò·Ä</a>
-							</div>
-						</li>
-						<li>
-							<a href="net.asp"><img src="images/menu6.jpg" />&nbsp;&nbsp;<span>·þÎñÍøµã</span></a>
-							<div></div>
-						</li>
-						<li>
-							<a href="download.asp" style="padding-right:0;"><img src="images/menu7.jpg" />&nbsp;&nbsp;<span>×ÊÁÏÏÂÔØ</span></a>
-							<div></div>
-						</li>
-					</ul>
-				</div>
             </div>
 			<script>
                 $("#menu>li").hover(
@@ -102,15 +111,15 @@
 		<div id="middle">
 			<div class="left">
 				<div class="leftMenu">
-	<div class="leftMenuTitle"><img src="images/dot1.png" />&nbsp;&nbsp;About Us ¹ØÓÚÎÒÃÇ</div>
+	<div class="leftMenuTitle"><img src="images/dot1.png" />&nbsp;&nbsp;About Us å…³äºŽæˆ‘ä»¬</div>
 	<div class="leftMenuContent">
-    	<a href='about.asp?classid=9&id=423'>¹«Ë¾½éÉÜ<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=424'>×ÊÖÊÈÙÓþ<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=425'>Õ½ÂÔºÏ×÷<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=426'>¼ÓÃËÕþ²ß<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=427'>ÁªÏµ·½Ê½<img src='images/arrow1.png' /></a>
+    	<a href='about.asp?classid=9&id=423'>å…¬å¸ä»‹ç»<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=424'>èµ„è´¨è£èª‰<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=425'>æˆ˜ç•¥åˆä½œ<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=426'>åŠ ç›Ÿæ”¿ç­–<img src='images/arrow1.png' /></a><a href='about.asp?classid=9&id=427'>è”ç³»æ–¹å¼<img src='images/arrow1.png' /></a>
 	</div>
 </div>
 			</div>
 			<div class="right">
 				<div class="productDetail"><div class="sContentD"><div class="certificate" align="left">
-	<span style="font-size:24px;background-color:#ffe500;"><strong>ãò ÖÝ ÀÏ ½Ñ ¾Æ ³§ ÊÚ È¨</strong></span> 
+	<span style="font-size:24px;background-color:#ffe500;"><strong>æ³¸ å·ž è€ çª– é…’ åŽ‚ æŽˆ æƒ</strong></span> 
 </div>
 <div class="certificate" align="left">
 	<span style="font-size:24px;background-color:#ffe500;"></span>&nbsp;
@@ -173,19 +182,19 @@
 	<img title="" alt="" src="http://www.jiaduoli198.com/images/UpFile/image/20160422/20160422103152475247.jpg" width="392" height="294" /> 
 </p>
 <p>
-	ãòÖÝÀÏ½Ñµ³Î¯¸±Êé¼Ç£¬¼ÍÎ¯Êé¼Ç£¬¹¤»áÖ÷Ï¯½­Óò»áÅ®Ê¿£¨×ó£©¸ø¼Î¶àÀû¶­ÊÂ³¤Àî»ÔÏÈÉú£¨ÓÒ£©°ä·¢¡°Õ½ÂÔºÏ×÷»ï°é¡±½±ÅÆ²¢ºÏÓ°ÁôÄî
+	æ³¸å·žè€çª–å…šå§”å‰¯ä¹¦è®°ï¼Œçºªå§”ä¹¦è®°ï¼Œå·¥ä¼šä¸»å¸­æ±ŸåŸŸä¼šå¥³å£«ï¼ˆå·¦ï¼‰ç»™å˜‰å¤šåˆ©è‘£äº‹é•¿æŽè¾‰å…ˆç”Ÿï¼ˆå³ï¼‰é¢å‘â€œæˆ˜ç•¥åˆä½œä¼™ä¼´â€å¥–ç‰Œå¹¶åˆå½±ç•™å¿µ
 </p>
 <div class="certificate">
 	&nbsp;
 </div>
 <div class="certificate">
-	&nbsp;<strong><span style="font-size:24px;background-color:#ffe500;">·¨ ¹ú ±´ Ðã ±¤ ¾Æ ×¯ ÊÚ È¨</span></strong> 
+	&nbsp;<strong><span style="font-size:24px;background-color:#ffe500;">æ³• å›½ è´ ç§€ å ¡ é…’ åº„ æŽˆ æƒ</span></strong> 
 </div>
 <p>
 	<img title="" alt="" src="http://www.jiaduoli198.com/images/UpFile/image/20160422/20160422102644804480.JPG" width="392" height="261" /> 
 </p>
 <p>
-	·¨¹ú±´Ðã±¤¾Æ×¯×¯Ö÷Mr ThomasÏÈÉú Óë ¼Î¶àÀû¶­ÊÂ³¤Àî»ÔÏÈÉú
+	æ³•å›½è´ç§€å ¡é…’åº„åº„ä¸»Mr Thomaså…ˆç”Ÿ ä¸Ž å˜‰å¤šåˆ©è‘£äº‹é•¿æŽè¾‰å…ˆç”Ÿ
 </p>
 <div class="certificate">
 	&nbsp;
@@ -207,17 +216,18 @@
 	<table id="ch-bottom">
 		<tr>
 			<td style="width:150px; border-right:1px solid #ceccc9;"><img src="images/logo1.png" alt="" /></td>
-	  <td style="padding-left:20px;">°æÈ¨ËùÓÐ&copy;½­ËÕ¼Î¶àÀûÉÌÃ³ÓÐÏÞ¹«Ë¾<br />
+	  <td style="padding-left:20px;">ç‰ˆæƒæ‰€æœ‰&copy;æ±Ÿè‹å˜‰å¤šåˆ©å•†è´¸æœ‰é™å…¬å¸<br />
 
-				µØÖ·£º½­ËÕÊ¡ÄÏ¾©ÊÐ¹ÄÂ¥Çø¶«±¦Â·8ºÅ3´±802<br />
-				ÈÈÏß£º400-816-5519 / 18100625066 / 025-86293833<br />
-				ÊÖ»ú£º17701592688
+				åœ°å€ï¼šæ±Ÿè‹çœå—äº¬å¸‚é¼“æ¥¼åŒºä¸œå®è·¯8å·3å¹¢802<br />
+				çƒ­çº¿ï¼š400-816-5519 / 18100625066 / 025-86293833<br />
+				æ‰‹æœºï¼š17701592688
 			</td>
 			<td style="text-align:right;">
 				Copyright 2014-2015 jiaduoli198.com<br />
 				All Rights Reserved.
 			</td>
 		</tr>
+		</table>
 	</div>
 
 	</div>

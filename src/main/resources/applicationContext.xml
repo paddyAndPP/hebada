@@ -36,6 +36,7 @@
 				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
 				<prop key="hibernate.autoReconnect">${hibernate.autoReconnect}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="connection.autocommit">true</prop>
 			</props>
 		</property>
 	</bean>

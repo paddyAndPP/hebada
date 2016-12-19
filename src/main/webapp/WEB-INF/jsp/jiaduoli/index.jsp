@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title>和八达</title>
+    <base href= <%=basePath%> >
     <link type="text/css" rel="stylesheet" href="css/Base.css" />
     <link type="text/css" rel="stylesheet" href="css/Modify.css" />
     <style>
@@ -26,6 +31,7 @@
         .link2 a{display:block; width:74px; float:left; border:1px solid #8f8f8f; border-radius:5px; text-align:center; font-size:14px; margin:6px 0;}
         a.link:hover{color:red;}
     </style>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.js"></script>
     <script>
         $(function(){
             $(".span1,.table1 a,.link1 a").prepend("&bull;&nbsp;&nbsp;");
@@ -52,36 +58,41 @@
                 <img src="images/phone.png" style="position:absolute; top:31px; right:0;" />
                 <ul id="menu">
                     <li>
-                        <a href="index.asp" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>首页</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
-                        <a href="activity.asp"><img src="images/menu2.jpg" />&nbsp;&nbsp;<span>最新活动</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/zxdt"><img src="images/menu2.jpg" />&nbsp;&nbsp;<span>最新活动</span></a>
                         <div></div>
                     </li>
                     <li>
-                        <a href="about.asp?classid=9"><img src="images/menu3.jpg" />&nbsp;&nbsp;<span>关于我们</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/gywm"><img src="images/menu3.jpg" />&nbsp;&nbsp;<span>关于我们</span></a>
                         <div>
-                            <a href='about.asp?classid=9&id=423'>公司介绍</a><a href='about.asp?classid=9&id=424'>资质荣誉</a><a href='about.asp?classid=9&id=425'>战略合作</a><a href='about.asp?classid=9&id=426'>加盟政策</a><a href='about.asp?classid=9&id=427'>联系方式</a>
+                            <a href='${pageContext.request.contextPath}/jdl/gsjs'>公司介绍</a>
+                            <a href='${pageContext.request.contextPath}/jdl/ryzz'>资质荣誉</a>
+                            <a href='${pageContext.request.contextPath}/jdl/zlhz'>战略合作</a>
+                            <a href='${pageContext.request.contextPath}/jdl/jmzc'>加盟政策</a>
+                            <a href='${pageContext.request.contextPath}/jdl/lxfs'>联系方式</a>
                         </div>
                     </li>
                     <li>
-                        <a href="news.asp"><img src="images/menu4.jpg" />&nbsp;&nbsp;<span>动态信息</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/dtxx"><img src="images/menu4.jpg" />&nbsp;&nbsp;<span>动态信息</span></a>
                         <div>
-                            <a href='news.asp?classid=16'>公司新闻</a><a href='news.asp?classid=17'>保险知识</a>
+                            <a href='${pageContext.request.contextPath}/jdl/gsxw'>公司新闻</a>
+                            <a href='${pageContext.request.contextPath}/jdl/bxzs'>保险知识</a>
                         </div>
                     </li>
                     <li>
-                        <a href="store.asp"><img src="images/menu5.jpg" />&nbsp;&nbsp;<span>网络商城</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/wlsc"><img src="images/menu5.jpg" />&nbsp;&nbsp;<span>网络商城</span></a>
                         <div>
-                            <a href='store.asp?classid=11'>泸州老窖</a><a href='store.asp?classid=18'>贝秀堡红酒</a><a href='store.asp?classid=19'>五粮液</a><a href='store.asp?classid=20'>茅台</a><a href='store.asp?classid=21'>驾图盒子</a><a href='store.asp?classid=22'>荣事达</a><a href='store.asp?classid=23'>飞科</a><a href='store.asp?classid=24'>堂皇家纺</a>
+                            <a href='${pageContext.request.contextPath}/jdl/lzlj'>泸州老窖</a>
                         </div>
                     </li>
                     <li>
-                        <a href="net.asp"><img src="images/menu6.jpg" />&nbsp;&nbsp;<span>服务网点</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/fwwd"><img src="images/menu6.jpg" />&nbsp;&nbsp;<span>服务网点</span></a>
                         <div></div>
                     </li>
                     <li>
-                        <a href="download.asp" style="padding-right:0;"><img src="images/menu7.jpg" />&nbsp;&nbsp;<span>资料下载</span></a>
+                        <a href="${pageContext.request.contextPath}/jdl/zlxz" style="padding-right:0;"><img src="images/menu7.jpg" />&nbsp;&nbsp;<span>资料下载</span></a>
                         <div></div>
                     </li>
                 </ul>
