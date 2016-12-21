@@ -130,7 +130,7 @@
                                 src="images/menu1.jpg"/>&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/gywm"><img
+                        <a href="${pageContext.request.contextPath}/jdl/gsjs"><img
                                 src="images/menu3.jpg"/>&nbsp;&nbsp;<span>关于我们</span></a>
                         <div>
                             <a href='${pageContext.request.contextPath}/jdl/gsjs'>公司介绍</a>

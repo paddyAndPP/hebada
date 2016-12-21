@@ -162,7 +162,12 @@
             width: 20%;
         }
     </style>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.1.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/jquery-1.9.1.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="js/jquery-2.1.1.js"></script>
+    <!--<![endif]-->
     <script>
         $(function () {
             $(".span1,.table1 a,.link1 a").prepend("&bull;&nbsp;&nbsp;");
@@ -192,7 +197,7 @@
                                 src="images/menu1.jpg"/>&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/gywm"><img
+                        <a href="${pageContext.request.contextPath}/jdl/gsjs"><img
                                 src="images/menu3.jpg"/>&nbsp;&nbsp;<span>关于我们</span></a>
                         <div>
                             <a href='${pageContext.request.contextPath}/jdl/gsjs'>公司介绍</a>
@@ -215,8 +220,16 @@
             </div>
         </div>
         <script>
-
-
+            $("#menu>li").hover(
+                function(){
+                    $(">div",this).show("fast");
+                    $(">a>span",this).css("color","yellow");
+                },
+                function(){
+                    $(">div",this).hide("fast");
+                    $(">a>span",this).css("color","white");
+                }
+            );
         </script>
     </div>
     <div id="middle">
