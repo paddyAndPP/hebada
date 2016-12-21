@@ -22,6 +22,10 @@
 	a.store{display:inline-block; float:left; margin-right:69px; margin-bottom:20px;}
 	a.store img{border:1px solid #cccccc; width:154px; height:197px;}
 	a.store div{text-align:center; color:black; width:156px; height:23px; overflow:hidden;}
+	/* 新增 */
+	.show a img{max-height: 440px;}
+	.pic_left{left:5%;}
+	.pic_right{right:5%;}
 </style>
 <script>
 	$(function(){
@@ -119,24 +123,27 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		
-		<div id="bottom">
-	<table id="ch-bottom">
-		<tr>
-			<td style="width:150px; border-right:1px solid #ceccc9;"><img src="images/logo1.png" alt="" /></td>
-	  <td style="padding-left:20px;">版权所有&copy;江苏嘉多利商贸有限公司<br />
 
-				地址：江苏省南京市鼓楼区东宝路8号3幢802<br />
-				热线：400-816-5519 / 18100625066 / 025-86293833<br />
-				手机：17701592688
-			</td>
-			<td style="text-align:right;">
-				Copyright 2014-2015 jiaduoli198.com<br />
-				All Rights Reserved.
-			</td>
-		</tr>
-		</table>
-	</div>
+		<div id="bottom">
+			<table id="ch-bottom">
+				<tr>
+					<td style="width: 20%;"></td>
+					<td style="width: 20%;text-align: right"><img src="images/company/common/logo.png" alt="厦门和八达,习酒醉天下" /></td>
+					<td style="text-align: center;width: 20%;">
+						版权所有&copy;厦门和八达贸易有限公司
+						<br />
+						<br/>
+						<a href="http://www.beianbaba.com/icp/hebada.com">闽ICP备16036924号</a>
+					</td>
+					<td  style="text-align: left;width: 20%;">
+						Copyright 2016 hebada.com<br />
+						<br />
+						All Rights Reserved.
+					</td>
+					<td style="width: 20%;"></td>
+				</tr>
+			</table>
+		</div>
 
 	</div>
 </body>

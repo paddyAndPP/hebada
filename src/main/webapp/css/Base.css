@@ -60,7 +60,7 @@ a.alternate,img.alternate{
 
 /*菜单*/
 #fa-menu{
-	width:; /*内容页面宽度*/
+	width:100%; /*内容页面宽度*/
 	height:139px; 
 	margin:0 auto; 
 	position:relative;
@@ -69,7 +69,7 @@ a.alternate,img.alternate{
 #menu{
 	position:absolute;
 	top:102px;
-	right:0;
+	left:10%;
 	z-index:1;
 }
 
@@ -114,7 +114,7 @@ a.alternate,img.alternate{
 }
 
 #ch-bottom{
-	width:;/*内容页面宽度*/
+	width:100%;/*内容页面宽度*/
 	margin:0 auto;
 	font-size:12px;
 	line-height:150%;
