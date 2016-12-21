@@ -25,31 +25,32 @@ public class HomeController {
     //公司介绍
     @RequestMapping(value = "/gsjs" ,method = RequestMethod.GET)
     public String gsjs(){
-        return "jiaduoli/gsjs";
+        return "jiaduoli/about/gsjs";
     }
 
+    //资质荣誉
+    @RequestMapping(value = "/ryzz", method = RequestMethod.GET)
+    public String zzry() {
+        return "jiaduoli/about/zzry";
+    }
     //公司新闻
-    @RequestMapping(value = "/gsxw" ,method = RequestMethod.GET)
+    @RequestMapping(value = {"/gsxw", "/dtxx"} ,method = RequestMethod.GET)
     public String gsxw(){
-        return "jiaduoli/gsxw";
+        return "jiaduoli/news/gsxw";
     }
 
     //关于我们
     @RequestMapping(value = "/gywm" ,method = RequestMethod.GET)
     public String gywm(){
-        return "jiaduoli/gywm";
+        return "jiaduoli/about/gsjs";
     }
 
     //加盟政策
     @RequestMapping(value = "/jmzc" ,method = RequestMethod.GET)
     public String jmzc(){
-        return "jiaduoli/jmzc";
+        return "jiaduoli/about/jmzc";
     }
-    //动态信息
-    @RequestMapping(value = "/dtxx" ,method = RequestMethod.GET)
-    public String dtxx(){
-        return "jiaduoli/dtxx";
-    }
+
     //战略合作
     @RequestMapping(value = "/zlhz" ,method = RequestMethod.GET)
     public String zlhz(){
@@ -85,9 +86,14 @@ public class HomeController {
     public String zlxz(){
         return "jiaduoli/zlxz";
     }
-    //资质荣誉
-    @RequestMapping(value = "/ryzz" ,method = RequestMethod.GET)
-    public String zzry(){
-        return "jiaduoli/ryzz";
+
+    @RequestMapping(value = "/drinks", method = RequestMethod.GET)
+    public String drink() {
+        return "jiaduoli/news/drink";
+    }
+
+    @RequestMapping(value = "/tea", method = RequestMethod.GET)
+    public String tea() {
+        return "jiaduoli/news/tea";
     }
 }

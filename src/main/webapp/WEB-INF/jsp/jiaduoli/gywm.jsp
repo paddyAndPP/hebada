@@ -7,7 +7,6 @@
 <head>
     <title>关于我们</title>
     <base href=<%=basePath%>>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>
     <link type="text/css" rel="stylesheet" href="css/Modify.css"/>
     <!--[if lt IE 9]>

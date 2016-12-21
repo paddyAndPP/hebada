@@ -119,3 +119,5 @@ a.alternate,img.alternate{
 	font-size:12px;
 	line-height:150%;
 }
+.pic_left{left:5%;}
+.pic_right{right:5%;}
