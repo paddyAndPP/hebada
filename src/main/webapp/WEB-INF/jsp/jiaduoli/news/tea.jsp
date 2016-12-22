@@ -6,6 +6,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <base href="<%=basePath%>"/>
+<meta http-equiv="X-UA-Compatible" content="IE=12" />
 <link href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
 <link type="text/css" rel="stylesheet" href="css/Base.css"/>
 <link type="text/css" rel="stylesheet" href="css/Modify.css"/>

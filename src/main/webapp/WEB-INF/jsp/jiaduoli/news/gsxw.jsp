@@ -7,6 +7,7 @@
 <head>
     <title>公司新闻</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=12" />
     <link href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <base href=<%=basePath%>>
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>

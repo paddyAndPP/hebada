@@ -5,8 +5,10 @@
 %>
 <html>
 <head>
+
     <title>和八达</title>
     <base href=<%=basePath%>>
+    <meta http-equiv="X-UA-Compatible" content="IE=12" />
     <link href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>
     <link type="text/css" rel="stylesheet" href="css/Modify.css"/>
@@ -65,6 +67,7 @@
             max-width: 255px;
             max-height: 30px;
             overflow: hidden;
+
         }
 
         a.link .span2 {
@@ -130,6 +133,7 @@
             text-align: center;
             font-size: 14px;
             margin: 6px 0;
+
         }
 
         a.link:hover {
@@ -163,7 +167,7 @@
         }
     </style>
     <!--[if lt IE 9]>
-    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery-2.1.1.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
     <script src="js/jquery-2.1.1.js"></script>

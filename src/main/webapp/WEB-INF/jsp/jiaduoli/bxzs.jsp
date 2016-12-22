@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=12" />
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>
     <link type="text/css" rel="stylesheet" href="css/Modify.css"/>
     <!--[if lt IE 9]>

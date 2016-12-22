@@ -6,7 +6,8 @@
 <html>
 <head>
     <title>关于我们</title>
-    <base href=<%=basePath%>>
+    <base href=<%=basePath%> />
+    <meta http-equiv="X-UA-Compatible" content="IE=12" />
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>
     <link type="text/css" rel="stylesheet" href="css/Modify.css"/>
     <!--[if lt IE 9]>
