@@ -8,7 +8,7 @@
 
     <title>和八达</title>
     <base href=<%=basePath%>>
-    <meta http-equiv="X-UA-Compatible" content="IE=12" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link href="${pageContext.request.contextPath}/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <link type="text/css" rel="stylesheet" href="css/Base.css"/>
     <link type="text/css" rel="stylesheet" href="css/Modify.css"/>
@@ -164,16 +164,40 @@
 
         #menu > li {
             width: 20%;
+            float:left;
+            position:relative;
         }
     </style>
     <!--[if lt IE 9]>
-    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
     <script src="js/jquery-2.1.1.js"></script>
     <!--<![endif]-->
     <script>
         $(function () {
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1;
+            if(isIE){
+                var IE55 = IE6 = IE7 = IE8 = false;
+                var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+                reIE.test(userAgent);
+                var fIEVersion = parseFloat(RegExp["$1"]);
+                console.log("ie version = "+fIEVersion);
+                IE55 = fIEVersion == 5.5;
+                IE6 = fIEVersion == 6.0;
+                IE7 = fIEVersion == 7.0;
+                IE8 = fIEVersion == 8.0;
+                if(IE55){
+                    alert("您的浏览器版本太低，建议升级版本获得更好的体验！");
+                }else if(IE6){
+                    alert("您的浏览器版本太低，建议升级版本获得更好的体验！");
+                }else if(IE7){
+                    alert("您的浏览器版本太低，建议升级版本获得更好的体验！");
+                }else if(IE8){
+                    alert("您的浏览器版本太低，建议升级版本获得更好的体验！");
+                }
+            }
             $(".span1,.table1 a,.link1 a").prepend("&bull;&nbsp;&nbsp;");
             var copy = $(".show").html();
             $(".show").append(copy);

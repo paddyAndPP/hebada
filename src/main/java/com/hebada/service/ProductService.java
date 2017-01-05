@@ -33,6 +33,7 @@ public class ProductService {
         product.setDeleted(false);
         product.setName(name);
         product.setDescription(description);
+        product.setType(Integer.parseInt(type));
 //        product.setId(NumberUtils.toInt(type));
         product.setPicUrl(pir_url);
         return productDao.save(product);

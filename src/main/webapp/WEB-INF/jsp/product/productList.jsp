@@ -40,6 +40,7 @@
         <p>
             <label>主图：</label>
             <input type="file"  id="add_win_pic" data-options="prompt:'请选择图片...'"/>
+            <input type="hidden" id="add_win_url"/>
             <a href="javascript:void(0);" class="easyui-linkbutton" id="add_win_upload">上传</a>
         </p>
         <p id="picPre" style="display: none;"><img id="add_win_pic_url"/></p>
@@ -100,7 +101,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/home/home.js"></script>
-
 <script type="text/javascript" >
 
     $(function(){
@@ -167,6 +167,8 @@
             imgPre.width = 400;
             $("#picPre").show();
         });
+
+
         //确定新增
         $("#add_win_save").on("click",function(){
             var name = $("#add_win_name").textbox("getValue");
@@ -175,7 +177,7 @@
                 $("#add_win_name").focus();
                 return false;
             }
-            var pic_url = $("#add_win_pic_url").attr("src");
+            var pic_url = $("#add_win_url").val();
             if(pic_url == ""){
                 $.messager.alert("提示","请上传主图！","info");
                 return false;
@@ -192,15 +194,14 @@
                 $("#add_win_description").focus();
                 return false;
             }
-
             $.ajax({
                 type : "post",
-                url : "../product/addProduct",
+                url : "../product/saveProduct",
                 data : {
                     name : name,
-                    account : account,
-                    role_id : role_id,
-                    password : password
+                    type : type,
+                    description : description,
+                    pic_url:pic_url
                 },
                 success : function (data) {
                     $("#add_win_cancle").trigger("click");
@@ -215,6 +216,7 @@
             $("#add_win_name").textbox("setValue","");
             $("#add_win_pic").val("");
             $("#add_win_pic_url").attr("src","");
+            $("#add_win_url").val("");
             $("#picPre").hide();
             $("#add_win").window("close");
         })
@@ -323,7 +325,7 @@
                 if(r){
                     $.ajax({
                         type : "post",
-                        url : "../user/deleteUser",
+                        url : "../product/deleteProduct",
                         data : {
                             id : object.id
                         },
@@ -338,6 +340,45 @@
                 }
             })
         })
+
+        //上传图片 begin
+
+        $("#add_win_upload").on("click",function(){
+            var domId = "add_win_pic";
+            var pic_url = uploadImg(domId);
+            $("#add_win_url").val(pic_url);
+            console.log($("#add_win_pic_url"))
+        })
+
+        function uploadImg(domId){
+            var formData = new FormData();
+            formData.append("file", document.getElementById(domId).files[0]);
+            var pic_url = "";
+            $.ajax({
+                url: "${pageContext.request.contextPath}/image/upload/single",
+                type: "POST",
+                async:false,
+                data: formData,
+                /**
+                 *必须false才会自动加上正确的Content-Type
+                 */
+                contentType: false,
+                /**
+                 * 必须false才会避开jQuery对 formdata 的默认处理
+                 * XMLHttpRequest会对 formdata 进行正确的处理
+                 */
+                processData: false,
+                success: function (data) {
+                    pic_url = data.url;
+                },
+                error: function () {
+                    $.messager.alert("提示","上传失败！",'info');
+                }
+            });
+            return pic_url;
+        }
+
+        //上传图片 end
     });
 </script>
 </body>

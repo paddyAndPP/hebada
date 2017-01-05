@@ -24,12 +24,7 @@ public class ImageController extends DefaultRestController{
     @Autowired
     private ImageService imageService;
 
-    @RequestMapping(value = "/image/upload", method = RequestMethod.POST)
-    public AjaxResponse upload(MultipartHttpServletRequest request) {
-        List<String> imageUrls =  imageService.uploadFiles(request.getFileMap(), "D:/news");
-        if(CollectionUtils.isEmpty(imageUrls)) return AjaxResponse.success().with(imageUrls);
-        return AjaxResponse.fail();
-    }
+
 
     @RequestMapping(value = "/image/upload/single", method = RequestMethod.POST)
     public Result uploadSingle(MultipartHttpServletRequest request) {
@@ -40,7 +35,7 @@ public class ImageController extends DefaultRestController{
     }
 
     private String buildURL(String host, int port, String uri) {
-        return "HTTP://" + host + ":" + port + uri + "/image/news/";
+        return "http://" + host + ":" + port + uri + "/image/news/";
     }
 
 }

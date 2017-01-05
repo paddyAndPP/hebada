@@ -3,10 +3,7 @@ package com.hebada.controller;
 import com.hebada.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -34,6 +31,7 @@ public class ProductController {
     }
 
     @RequestMapping(value="/product/saveProduct",method = RequestMethod.POST)
+    @ResponseBody
     public boolean saveProduct(@RequestParam(name="name")String name,
                               @RequestParam(name="type")String type,
                               @RequestParam(name="description")String description,
@@ -43,6 +41,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/product/updateProduct" , method = RequestMethod.POST)
+    @ResponseBody
     public boolean updateProduct(@RequestParam(name="id")int id,
                           @RequestParam(name="name",required = false)String name,
                           @RequestParam(name="type",required = false)String type,
@@ -53,7 +52,7 @@ public class ProductController {
 
 
     @RequestMapping(value = "/product/deleteProduct" , method = RequestMethod.POST)
-    public boolean deleteProduct(int id){
+    public @ResponseBody boolean deleteProduct(int id){
         return productService.delete(id);
     }
 }
