@@ -1,8 +1,11 @@
 package com.hebada.repository;
 
 import com.hebada.entity.Product;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by aiiajj on 2016/12/18.
@@ -52,7 +55,7 @@ public class ProductDao {
     public PageResults<Product> findByPage(int page,int row,String type,String name){
         StringBuffer hql = new StringBuffer("from Product where deleted = 0 ");
         StringBuffer count = new StringBuffer("select count(*) from Product where deleted = 0 ");
-        /*if(!StringUtils.isEmpty(type)){
+        if(!StringUtils.isEmpty(type)){
             if(type.matches("[0-9]*")){
                 hql.append(" and type = "+type);
                 count.append(" and type = "+type);
@@ -61,7 +64,7 @@ public class ProductDao {
         if(!StringUtils.isEmpty(name)){
             hql.append(" and name like '%"+name +"%'");
             count.append(" and name like '%"+name +"%'");
-        }*/
+        }
         hql.append(" order by id desc");
         PageResults results = baseDao.findPage(hql.toString(), count.toString(), null, page, row);
         return results;
@@ -69,5 +72,9 @@ public class ProductDao {
 
     public Product get(int id){
         return (Product)baseDao.get(Product.class,id);
+    }
+
+    public List<Product> getAll() {
+        return baseDao.find("from Product where deleted = 0");
     }
 }

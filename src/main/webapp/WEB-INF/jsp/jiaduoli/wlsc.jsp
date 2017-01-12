@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -60,7 +62,7 @@
                 <img src="images/company/common/phone.png" style="position:absolute; top:31px; " class="pic_right"/>
                 <ul id="menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img
+                        <a href="${pageContext.request.contextPath}/" style="padding-left:0;"><img
                                 src="images/menu1.jpg"/>&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
@@ -100,31 +102,13 @@
             </div>
         </div>
         <div class="right">
-            <a href='javascript:void(0);' class='store'><img src='${pageContext.request.contextPath}/images/company/product/zuidong.jpg'/>
-                <div>醉天下·醉东</div>
-            </a>
-            <a href='javascript:void(0);' class='store'><img src='${pageContext.request.contextPath}/images/company/product/zuinan.jpg'/>
-                <div>醉天下·醉南</div>
-            </a>
-            <a href='javascript:void(0);' class='store'><img src='${pageContext.request.contextPath}/images/company/product/zuixi.jpg'/>
-                <div>醉天下·醉西</div>
-            </a>
-            <a href='javascript:void(0);' class='store'><img src='${pageContext.request.contextPath}/images/company/product/xo1.jpg'/>
-                <div>白兰地·XO</div>
-            </a>
-            <a href='javascript:void(0);' class='store'><img src='${pageContext.request.contextPath}/images/company/product/dahongpao.jpg'/>
-                <div>大红袍</div>
-            </a>
-
+            <c:forEach items="${productList}" var="product">
+                <a href='javascript:void(0);' class='store'><img src='${product.picUrl}' width="" alt="${product.name}"/>
+                    <div>${product.name}</div>
+                </a>
+            </c:forEach>
             <div class='clear'></div>
-            <%--<div style='text-align:center'><br>共有：<strong>24</strong>条&nbsp;每页显示：<strong>12</strong>条&nbsp;&nbsp;&nbsp;[首页]&nbsp;[上一页]&nbsp;<a
-                    class='c' href="?Page=2">[下一页]</a>&nbsp;<a class='c'
-                                                               href="?Page=2">[尾页]</a>&nbsp;&nbsp;&nbsp;页次：<strong>1</strong>/2&nbsp;转到:<select
-                    name="Page"
-                    onchange="javascript:window.location='?Page='+this.options[this.selectedIndex].value+'';">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-            </select>&nbsp;&nbsp;<br><br></div>--%>
+
             <script type="text/javascript">
                 $("a.store").hover(function () {
                     $("div", this).css("color", "red");

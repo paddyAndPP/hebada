@@ -103,7 +103,7 @@
                 <img src="images/company/common/phone.png" style="position:absolute; top:31px; " class="pic_right"/>
                 <ul id="menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>首页</span></a>
+                        <a href="${pageContext.request.contextPath}/" style="padding-left:0;"><img src="images/menu1.jpg" />&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/jdl/gsjs"><img src="images/menu3.jpg" />&nbsp;&nbsp;<span>关于我们</span></a>

@@ -115,7 +115,7 @@
                 <img src="images/phone.png" style="position:absolute; top:31px; right:0;"/>
                 <ul id="menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img
+                        <a href="${pageContext.request.contextPath}/" style="padding-left:0;"><img
                                 src="images/menu1.jpg"/>&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>

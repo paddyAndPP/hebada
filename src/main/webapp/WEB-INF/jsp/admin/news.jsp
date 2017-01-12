@@ -31,8 +31,8 @@
     </form>
     <div style="text-align:center;padding:5px 0">
         <a href="javascript:void(0)" class="easyui-linkbutton" id="btn-publish" style="width:80px">是否发布</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" id="btn-submit" style="width:80px">保存</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" id="btn-clear" style="width:80px">重置</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-submit'" id="btn-submit" style="width:80px">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" id="btn-clear" style="width:80px">重置</a>
     </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-easyui-1.5/jquery.min.js"></script>
@@ -70,9 +70,9 @@
                 data:JSON.stringify(data),
                 contentType:"application/json",
                 success:function (result) {
-                    if(result.sucess){
+                    if(result.status == 0){
                         $.messager.alert("提示","保存成功","info");
-                        selectTab("新闻列表");
+                        selectTab("新闻信息管理");
                     }else{
                         $.messager.alert("提示","系统异常，请联系石龙飞","error");
                     }

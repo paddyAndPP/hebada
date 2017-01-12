@@ -24,8 +24,6 @@ public class ImageController extends DefaultRestController{
     @Autowired
     private ImageService imageService;
 
-
-
     @RequestMapping(value = "/image/upload/single", method = RequestMethod.POST)
     public Result uploadSingle(MultipartHttpServletRequest request) {
         String filePath = request.getServletContext().getRealPath("/") + "image/news";
@@ -35,7 +33,7 @@ public class ImageController extends DefaultRestController{
     }
 
     private String buildURL(String host, int port, String uri) {
-        return "http://" + host + ":" + port + uri + "/image/news/";
+        return uri + "/image/news/";
     }
 
 }

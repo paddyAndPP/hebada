@@ -31,7 +31,8 @@
                 {field:'id',title:'id',width:80,hidden:true},
                 {field:'title',title:'标题'},
                 {field:'top',title:'是否置顶',width:50,align:'center'},
-                {field:'content',title:'新闻内容',align:'center',width:80}
+                {field:'content',title:'新闻内容',align:'center',width:60},
+                {field:'publishTime',title:'发布时间',align:'center',width:30}
             ]],
             title:"新闻列表",
             fitColumns:true,
@@ -80,7 +81,33 @@
                 title : $("#title").textbox("getValue")
             })
         });
-
+        
+        $("#add").on("click",function () {
+            var self = this;
+            var $ = top.jQuery;
+            var tab = $(".easyui-tabs");
+            var text = "写新闻";
+            var url = "${pageContext.request.contextPath}/news";
+            var content = '<iframe id="mainFrame" name="mainFrame" scrolling="auto" frameborder="0"  src="' + url
+                    + '" style=\"width:100%;height:99.5%;\"></iframe>';
+            if (tab.tabs('exists', text)) {
+                tab.tabs('select', text);
+                var curTab = tab.tabs('getTab',text);
+                tab.tabs('update', {
+                    tab: curTab,
+                    options: {
+                        content : content
+                    }
+                });
+            } else {
+                tab.tabs('add', {
+                    title : text,
+                    closable : true,
+                    content : content
+                });
+            }
+        });
+        
         $("#remove").on("click",function () {
             var object = $("#tb").datagrid("getSelected");
             if(!!!object){

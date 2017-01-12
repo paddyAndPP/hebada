@@ -1,8 +1,16 @@
 package com.jiaduoli.controller;
 
+import com.hebada.entity.Product;
+import com.hebada.repository.PageResults;
+import com.hebada.service.NewsService;
+import com.hebada.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 /**
  * Created by paddy.luo on 2016/12/18.
@@ -11,11 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/jdl")
 public class HomeController {
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index() {
-        return "jiaduoli/index";
-    }
-
+    @Autowired
+    private ProductService productService;
     //保险知识
     @RequestMapping(value = "/bxzs" ,method = RequestMethod.GET)
     public String bxzs(){
@@ -73,7 +78,9 @@ public class HomeController {
     }
     //网络商城
     @RequestMapping(value = "/wlsc" ,method = RequestMethod.GET)
-    public String wlsc(){
+    public String wlsc(ModelMap model){
+        List<Product> productList = productService.getAll();
+        model.put("productList", productList);
         return "jiaduoli/wlsc";
     }
     //联系方式

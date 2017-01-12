@@ -27,6 +27,7 @@ public class NewsService {
     public void save(News news){
         News currnetNews = newsRepository.get(news.getId());
         if(currnetNews == null) {
+            news.setPublishTime(new Timestamp(System.currentTimeMillis()));
             newsRepository.save(news);
         }else{
             currnetNews.setTitle(news.getTitle());
@@ -37,16 +38,8 @@ public class NewsService {
         }
     }
 
-    public String findByPage(int page, int rows, String title){
-        PageResults<News> result = newsRepository.findByPage(page,rows,title);
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "";
-        try{
-            json = mapper.writeValueAsString(result);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return json;
+    public PageResults findByPage(int page, int rows, String title){
+        return  newsRepository.findByPage(page,rows,title);
     }
 
     public void delete(Integer id) {

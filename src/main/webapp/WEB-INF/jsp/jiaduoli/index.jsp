@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -221,7 +223,7 @@
                 <img src="images/company/common/phone.png" style="position:absolute; top:31px; " class="pic_right"/>
                 <ul id="menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/jdl/index" style="padding-left:0;"><img
+                        <a href="${pageContext.request.contextPath}/" style="padding-left:0;"><img
                                 src="images/menu1.jpg"/>&nbsp;&nbsp;<span>首页</span></a>
                     </li>
                     <li>
@@ -279,11 +281,10 @@
             <div class="list" style="padding-bottom:2px">
                 <span class="title">新闻动态</span>
                 <p>
-                    <a target="_blank" class='link' href='${pageContext.request.contextPath}/jdl/drinks'><span
-                            class='span1'>【习酒】贵州习酒荣获2016中国标准创新贡献奖！</span><span
-                            class='span2'>2016-11-30</span></a>
-                    <a target="_blank" class='link' href='${pageContext.request.contextPath}/jdl/tea'><span
-                            class='span1'>【大红袍】武夷岩茶大红袍的制作工艺流程！</span><span class='span2'>2016-12-03</span></a>
+                    <c:forEach items="${newsList}" var="news">
+                        <a class='link' href='${pageContext.request.contextPath}/jdl/news/detail/${news.id}'><span
+                                class='span1'>${news.title}</span><span class='span2'><fmt:formatDate value="${news.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></a>
+                    </c:forEach>
                 </p>
             </div>
             <div class="list" style="display: none;">
@@ -315,21 +316,10 @@
                                                                                                alt=""/></td>
                         <td style="overflow:hidden; height:440px; position:relative; vertical-align:top;">
                             <div class="show">
-                                <a href='javascript:void(0);'><img src='images/company/product/zuidong.jpg' width=""/>
-                                    <div>醉东</div>
-                                </a>
-                                <a href='javascript:void(0);'><img src='images/company/product/zuinan.jpg'/>
-                                    <div>醉南</div>
-                                </a>
-                                <a href='javascript:void(0);'><img src='images/company/product/zuixi.jpg'/>
-                                    <div>醉西</div>
-                                </a>
-                                <a href='javascript:void(0);'><img src='images/company/product/xo1.jpg'/>
-                                    <div>XO</div>
-                                </a>
-                                <a href='javascript:void(0);'><img src='images/company/product/dahongpao.jpg'/>
-                                    <div>大红袍</div>
-                                </a>
+                                <c:forEach items="${productList}" var="product">
+                                    <a href='javascript:void(0);'><img src='${product.picUrl}' width="" alt="${product.name}"/>
+                                    </a>
+                                </c:forEach>
                             </div>
                         </td>
                         <td id="gt" style="width:32px;padding:0 5px;padding-bottom:38px;"><img src="images/gt.png"
